@@ -61,6 +61,110 @@ local_settings.py
 db.sqlite3
 db.sqlite3-journal
 
+# Django - Archivos de configuración local
+local_settings.py
+settings_local.py
+*.local.py
+.env.local
+.env.*.local
+
+# Django - Archivos de secretos y claves
+secrets.json
+*.pem
+*.key
+*.crt
+secret_key.txt
+
+# Django - Archivos estáticos y media recopilados
+/staticfiles/
+/static_root/
+/media/
+/media_root/
+/collected_static/
+
+# Django - Archivos de cache
+*.pyc
+*.pyo
+*.pyd
+.Python
+*.so
+*.egg
+*.egg-info/
+dist/
+build/
+
+# Django - Archivos de migraciones locales (opcional, descomenta si no quieres versionar migraciones locales)
+# */migrations/*.py
+# !*/migrations/__init__.py
+
+# Django - Archivos de sesión
+*.session
+
+# Django - Archivos de base de datos
+*.db
+*.sqlite
+*.sqlite3
+*.db-journal
+
+# Django - Archivos de cache de Django
+*.cache
+.cache/
+django_cache/
+
+# Django - Archivos de logs
+logs/
+*.log.*
+*.log
+log/
+
+# Django - Archivos de coverage
+htmlcov/
+.coverage
+.coverage.*
+coverage.xml
+*.cover
+.hypothesis/
+.pytest_cache/
+
+# Django - Archivos de compilación de templates
+*.pyc
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Django - Archivos de sistema operativo
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+*~
+
+# Django - Archivos de frontend (si usas npm/yarn)
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+package-lock.json
+yarn.lock
+
+# Django - Archivos de compilación de frontend
+*.map
+*.min.js
+*.min.css
+/build/
+/dist/
+/webpack-stats.json
+
+# Django - Archivos de backup
+*.bak
+*.backup
+*.swp
+*.swo
+*~
+
 # Flask stuff:
 instance/
 .webassets-cache
