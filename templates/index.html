@@ -16,28 +16,41 @@
     
     <!-- CSS -->
     <link rel="stylesheet" href="/static/css/style.css">
+    <style>
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border-width: 0;
+        }
+    </style>
 </head>
 <body>
     <!-- Navigation -->
-    <nav class="navbar">
+    <nav class="navbar" role="navigation" aria-label="Navegación principal">
         <div class="container">
             <div class="nav-wrapper">
-                <div class="logo">
-                    <i class="fas fa-home"></i>
+                <a href="#inicio" class="logo" aria-label="Ir al inicio">
+                    <i class="fas fa-home" aria-hidden="true"></i>
                     <span>Luis Fernando Suarez Brucsoni</span>
-                </div>
-                <ul class="nav-menu" id="navMenu">
-                    <li><a href="#inicio">Inicio</a></li>
-                    <li><a href="#propiedades">Propiedades</a></li>
-                    <li><a href="#servicios">Servicios</a></li>
-                    <li><a href="#sobre-mi">Sobre Mí</a></li>
-                    <li><a href="#contacto">Contacto</a></li>
+                </a>
+                <ul class="nav-menu" id="navMenu" role="menubar">
+                    <li role="none"><a href="#inicio" role="menuitem" aria-label="Ir a la sección de inicio">Inicio</a></li>
+                    <li role="none"><a href="#propiedades" role="menuitem" aria-label="Ver propiedades disponibles">Propiedades</a></li>
+                    <li role="none"><a href="#servicios" role="menuitem" aria-label="Conocer nuestros servicios">Servicios</a></li>
+                    <li role="none"><a href="#sobre-mi" role="menuitem" aria-label="Conocer más sobre mí">Sobre Mí</a></li>
+                    <li role="none"><a href="#contacto" role="menuitem" aria-label="Ponerse en contacto" class="nav-cta">Contacto</a></li>
                 </ul>
-                <div class="hamburger" id="hamburger">
+                <button class="hamburger" id="hamburger" aria-label="Abrir menú de navegación" aria-expanded="false" aria-controls="navMenu">
                     <span></span>
                     <span></span>
                     <span></span>
-                </div>
+                </button>
             </div>
         </div>
     </nav>
@@ -60,12 +73,26 @@
                             Tu éxito es mi compromiso. Trabajemos juntos para hacer realidad tus proyectos inmobiliarios.
                         </p>
                         <div class="hero-buttons">
-                            <a href="#propiedades" class="btn btn-primary">
-                                <i class="fas fa-search"></i> Ver Propiedades
+                            <a href="#propiedades" class="btn btn-primary" aria-label="Explorar propiedades disponibles">
+                                <i class="fas fa-search" aria-hidden="true"></i> Ver Propiedades
                             </a>
-                            <a href="#contacto" class="btn btn-secondary">
-                                <i class="fas fa-phone"></i> Contactar Ahora
+                            <a href="#contacto" class="btn btn-secondary" aria-label="Contactar ahora">
+                                <i class="fas fa-phone" aria-hidden="true"></i> Contactar Ahora
                             </a>
+                        </div>
+                        <div class="hero-trust-badges">
+                            <div class="trust-badge">
+                                <i class="fas fa-shield-alt" aria-hidden="true"></i>
+                                <span>Transacciones Seguras</span>
+                            </div>
+                            <div class="trust-badge">
+                                <i class="fas fa-award" aria-hidden="true"></i>
+                                <span>10+ Años de Experiencia</span>
+                            </div>
+                            <div class="trust-badge">
+                                <i class="fas fa-users" aria-hidden="true"></i>
+                                <span>500+ Clientes Satisfechos</span>
+                            </div>
                         </div>
                     </div>
                     <div class="hero-image-wrapper">
@@ -74,60 +101,79 @@
                 </div>
             </div>
         </div>
-        <div class="scroll-indicator">
-            <i class="fas fa-chevron-down"></i>
-        </div>
+        <a href="#servicios" class="scroll-indicator" aria-label="Desplazarse a la siguiente sección">
+            <i class="fas fa-chevron-down" aria-hidden="true"></i>
+        </a>
     </section>
 
     <!-- Services Section -->
     <section id="servicios" class="features">
         <div class="container">
             <div class="section-header">
+                <span class="section-label">Lo que ofrecemos</span>
                 <h2 class="section-title">Nuestros Servicios</h2>
-                <p class="section-subtitle">Soluciones completas para todas tus necesidades inmobiliarias</p>
+                <p class="section-subtitle">Soluciones completas y personalizadas para todas tus necesidades inmobiliarias</p>
             </div>
             <div class="features-grid">
                 <div class="feature-card">
                     <div class="feature-icon">
-                        <i class="fas fa-home"></i>
+                        <i class="fas fa-home" aria-hidden="true"></i>
                     </div>
                     <h3>Compra de Propiedades</h3>
                     <p>Te ayudamos a encontrar la propiedad perfecta que se ajuste a tus necesidades y presupuesto. Búsqueda personalizada y acompañamiento en todo el proceso.</p>
+                    <a href="#contacto" class="feature-link" aria-label="Solicitar información sobre compra de propiedades">
+                        Saber más <i class="fas fa-arrow-right" aria-hidden="true"></i>
+                    </a>
                 </div>
                 <div class="feature-card">
                     <div class="feature-icon">
-                        <i class="fas fa-handshake"></i>
+                        <i class="fas fa-handshake" aria-hidden="true"></i>
                     </div>
                     <h3>Venta de Propiedades</h3>
                     <p>Maximiza el valor de tu propiedad con nuestra estrategia de marketing y negociación. Gestión completa desde la valoración hasta el cierre de la venta.</p>
+                    <a href="#contacto" class="feature-link" aria-label="Solicitar información sobre venta de propiedades">
+                        Saber más <i class="fas fa-arrow-right" aria-hidden="true"></i>
+                    </a>
                 </div>
                 <div class="feature-card">
                     <div class="feature-icon">
-                        <i class="fas fa-clipboard-check"></i>
+                        <i class="fas fa-clipboard-check" aria-hidden="true"></i>
                     </div>
                     <h3>Asesoría Inmobiliaria</h3>
                     <p>Asesoramiento profesional en inversiones, trámites legales, financiamiento y todo lo relacionado con el mercado inmobiliario.</p>
+                    <a href="#contacto" class="feature-link" aria-label="Solicitar asesoría inmobiliaria">
+                        Saber más <i class="fas fa-arrow-right" aria-hidden="true"></i>
+                    </a>
                 </div>
                 <div class="feature-card">
                     <div class="feature-icon">
-                        <i class="fas fa-calculator"></i>
+                        <i class="fas fa-calculator" aria-hidden="true"></i>
                     </div>
                     <h3>Tasaciones Profesionales</h3>
                     <p>Valuación precisa de tu propiedad con análisis de mercado, ubicación y características. Informes detallados y confiables.</p>
+                    <a href="#contacto" class="feature-link" aria-label="Solicitar tasación profesional">
+                        Saber más <i class="fas fa-arrow-right" aria-hidden="true"></i>
+                    </a>
                 </div>
                 <div class="feature-card">
                     <div class="feature-icon">
-                        <i class="fas fa-key"></i>
+                        <i class="fas fa-key" aria-hidden="true"></i>
                     </div>
                     <h3>Gestión de Alquileres</h3>
                     <p>Administración completa de propiedades en alquiler. Búsqueda de inquilinos, contratos y mantenimiento de la propiedad.</p>
+                    <a href="#contacto" class="feature-link" aria-label="Solicitar información sobre gestión de alquileres">
+                        Saber más <i class="fas fa-arrow-right" aria-hidden="true"></i>
+                    </a>
                 </div>
                 <div class="feature-card">
                     <div class="feature-icon">
-                        <i class="fas fa-vr-cardboard"></i>
+                        <i class="fas fa-vr-cardboard" aria-hidden="true"></i>
                     </div>
                     <h3>Paseos Virtuales 360°</h3>
                     <p>Visita propiedades desde cualquier lugar con nuestra tecnología de paseos virtuales. Una herramienta adicional para conocer mejor las propiedades.</p>
+                    <a href="#propiedades" class="feature-link" aria-label="Ver propiedades con paseos virtuales">
+                        Explorar <i class="fas fa-arrow-right" aria-hidden="true"></i>
+                    </a>
                 </div>
             </div>
         </div>
@@ -137,42 +183,43 @@
     <section id="propiedades" class="properties">
         <div class="container">
             <div class="section-header">
+                <span class="section-label">Portafolio exclusivo</span>
                 <h2 class="section-title">Propiedades Destacadas</h2>
                 <p class="section-subtitle">Explora nuestras mejores opciones disponibles para compra o venta</p>
             </div>
             <div class="properties-grid">
                 <div class="property-card">
                     <div class="property-image">
-                        <div class="virtual-badge">
-                            <i class="fas fa-vr-cardboard"></i> Paseo Virtual Disponible
+                        <div class="virtual-badge" aria-label="Paseo virtual disponible">
+                            <i class="fas fa-vr-cardboard" aria-hidden="true"></i> Paseo Virtual Disponible
                         </div>
                         <div class="property-overlay">
-                            <a href="#contacto" class="btn-view">
-                                <i class="fas fa-info-circle"></i> Más Información
+                            <a href="#contacto" class="btn-view" aria-label="Solicitar más información sobre esta propiedad">
+                                <i class="fas fa-info-circle" aria-hidden="true"></i> Más Información
                             </a>
                         </div>
                     </div>
                     <div class="property-info">
                         <h3>Casa Moderna en Zona Residencial</h3>
                         <p class="property-location">
-                            <i class="fas fa-map-marker-alt"></i> Zona Norte
+                            <i class="fas fa-map-marker-alt" aria-hidden="true"></i> Zona Norte
                         </p>
                         <div class="property-details">
-                            <span><i class="fas fa-bed"></i> 3 Habitaciones</span>
-                            <span><i class="fas fa-bath"></i> 2 Baños</span>
-                            <span><i class="fas fa-ruler-combined"></i> 180 m²</span>
+                            <span><i class="fas fa-bed" aria-hidden="true"></i> 3 Habitaciones</span>
+                            <span><i class="fas fa-bath" aria-hidden="true"></i> 2 Baños</span>
+                            <span><i class="fas fa-ruler-combined" aria-hidden="true"></i> 180 m²</span>
                         </div>
                         <div class="property-price">$250,000</div>
                     </div>
                 </div>
                 <div class="property-card">
                     <div class="property-image">
-                        <div class="virtual-badge">
-                            <i class="fas fa-vr-cardboard"></i> Paseo Virtual Disponible
+                        <div class="virtual-badge" aria-label="Paseo virtual disponible">
+                            <i class="fas fa-vr-cardboard" aria-hidden="true"></i> Paseo Virtual Disponible
                         </div>
                         <div class="property-overlay">
-                            <a href="#contacto" class="btn-view">
-                                <i class="fas fa-info-circle"></i> Más Información
+                            <a href="#contacto" class="btn-view" aria-label="Solicitar más información sobre esta propiedad">
+                                <i class="fas fa-info-circle" aria-hidden="true"></i> Más Información
                             </a>
                         </div>
                     </div>
@@ -191,12 +238,12 @@
                 </div>
                 <div class="property-card">
                     <div class="property-image">
-                        <div class="virtual-badge">
-                            <i class="fas fa-vr-cardboard"></i> Paseo Virtual Disponible
+                        <div class="virtual-badge" aria-label="Paseo virtual disponible">
+                            <i class="fas fa-vr-cardboard" aria-hidden="true"></i> Paseo Virtual Disponible
                         </div>
                         <div class="property-overlay">
-                            <a href="#contacto" class="btn-view">
-                                <i class="fas fa-info-circle"></i> Más Información
+                            <a href="#contacto" class="btn-view" aria-label="Solicitar más información sobre esta propiedad">
+                                <i class="fas fa-info-circle" aria-hidden="true"></i> Más Información
                             </a>
                         </div>
                     </div>
@@ -215,14 +262,12 @@
                 </div>
             </div>
             <div class="properties-cta">
-                <a href="#contacto" class="btn btn-primary">
-                    Ver Todas las Propiedades
+                <a href="#contacto" class="btn btn-primary" aria-label="Ver todas las propiedades disponibles">
+                    <i class="fas fa-th" aria-hidden="true"></i> Ver Todas las Propiedades
                 </a>
             </div>
         </div>
     </section>
-
-    
 
     <!-- About Section -->
     <section id="sobre-mi" class="about">
@@ -271,32 +316,33 @@
     <section id="contacto" class="contact">
         <div class="container">
             <div class="section-header">
+                <span class="section-label">Hablemos</span>
                 <h2 class="section-title">Contáctame</h2>
-                <p class="section-subtitle">¿Listo para encontrar tu hogar ideal? Estoy aquí para ayudarte</p>
+                <p class="section-subtitle">¿Listo para encontrar tu hogar ideal? Estoy aquí para ayudarte en cada paso del proceso</p>
             </div>
             <div class="contact-content">
                 <div class="contact-info">
                     <div class="contact-item">
                         <div class="contact-icon">
-                            <i class="fas fa-phone"></i>
+                            <i class="fas fa-phone" aria-hidden="true"></i>
                         </div>
                         <div class="contact-details">
                             <h3>Teléfono</h3>
-                            <p>+1 (555) 123-4567</p>
+                            <a href="tel:+15551234567" aria-label="Llamar al teléfono">+1 (555) 123-4567</a>
                         </div>
                     </div>
                     <div class="contact-item">
                         <div class="contact-icon">
-                            <i class="fas fa-envelope"></i>
+                            <i class="fas fa-envelope" aria-hidden="true"></i>
                         </div>
                         <div class="contact-details">
                             <h3>Email</h3>
-                            <p>contacto@luisfernandosuarez.com</p>
+                            <a href="mailto:contacto@luisfernandosuarez.com" aria-label="Enviar un email">contacto@luisfernandosuarez.com</a>
                         </div>
                     </div>
                     <div class="contact-item">
                         <div class="contact-icon">
-                            <i class="fas fa-map-marker-alt"></i>
+                            <i class="fas fa-map-marker-alt" aria-hidden="true"></i>
                         </div>
                         <div class="contact-details">
                             <h3>Oficina</h3>
@@ -305,31 +351,36 @@
                     </div>
                     <div class="contact-item">
                         <div class="contact-icon">
-                            <i class="fas fa-clock"></i>
+                            <i class="fas fa-clock" aria-hidden="true"></i>
                         </div>
                         <div class="contact-details">
-                            <h3>Horario</h3>
+                            <h3>Horario de Atención</h3>
                             <p>Lun - Vie: 9:00 AM - 6:00 PM</p>
                             <p>Sáb: 10:00 AM - 2:00 PM</p>
                         </div>
                     </div>
                 </div>
-                <form class="contact-form" id="contactForm">
+                <form class="contact-form" id="contactForm" aria-label="Formulario de contacto">
                     <div class="form-group">
-                        <input type="text" id="name" name="name" placeholder="Tu nombre" required>
+                        <label for="name" class="sr-only">Nombre</label>
+                        <input type="text" id="name" name="name" placeholder="Tu nombre" required aria-required="true">
                     </div>
                     <div class="form-group">
-                        <input type="email" id="email" name="email" placeholder="Tu email" required>
+                        <label for="email" class="sr-only">Email</label>
+                        <input type="email" id="email" name="email" placeholder="Tu email" required aria-required="true">
                     </div>
                     <div class="form-group">
-                        <input type="tel" id="phone" name="phone" placeholder="Tu teléfono">
+                        <label for="phone" class="sr-only">Teléfono</label>
+                        <input type="tel" id="phone" name="phone" placeholder="Tu teléfono (opcional)">
                     </div>
                     <div class="form-group">
-                        <textarea id="message" name="message" rows="5" placeholder="Tu mensaje" required></textarea>
+                        <label for="message" class="sr-only">Mensaje</label>
+                        <textarea id="message" name="message" rows="5" placeholder="Cuéntame sobre tu proyecto inmobiliario..." required aria-required="true"></textarea>
                     </div>
-                    <button type="submit" class="btn btn-primary">
-                        <i class="fas fa-paper-plane"></i> Enviar Mensaje
+                    <button type="submit" class="btn btn-primary" aria-label="Enviar mensaje de contacto">
+                        <i class="fas fa-paper-plane" aria-hidden="true"></i> Enviar Mensaje
                     </button>
+                    <p class="form-privacy">Al enviar este formulario, aceptas que tus datos sean utilizados para contactarte.</p>
                 </form>
             </div>
         </div>
@@ -346,10 +397,10 @@
                     </div>
                     <p>Tu agente inmobiliario de confianza. Especialistas en compra, venta y asesoría de propiedades con más de 10 años de experiencia.</p>
                     <div class="social-links">
-                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
-                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-                        <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
-                        <a href="#" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                        <a href="#" aria-label="Síguenos en Facebook" target="_blank" rel="noopener noreferrer"><i class="fab fa-facebook" aria-hidden="true"></i></a>
+                        <a href="#" aria-label="Síguenos en Instagram" target="_blank" rel="noopener noreferrer"><i class="fab fa-instagram" aria-hidden="true"></i></a>
+                        <a href="#" aria-label="Conectar en LinkedIn" target="_blank" rel="noopener noreferrer"><i class="fab fa-linkedin" aria-hidden="true"></i></a>
+                        <a href="#" aria-label="Contactar por WhatsApp" target="_blank" rel="noopener noreferrer"><i class="fab fa-whatsapp" aria-hidden="true"></i></a>
                     </div>
                 </div>
                 <div class="footer-section">
@@ -375,10 +426,11 @@
                 <div class="footer-section">
                     <h3>Newsletter</h3>
                     <p>Suscríbete para recibir las mejores ofertas</p>
-                    <form class="newsletter-form">
-                        <input type="email" placeholder="Tu email" required>
-                        <button type="submit" class="btn btn-primary">
-                            <i class="fas fa-paper-plane"></i>
+                    <form class="newsletter-form" aria-label="Formulario de suscripción al newsletter">
+                        <label for="newsletter-email" class="sr-only">Email para newsletter</label>
+                        <input type="email" id="newsletter-email" placeholder="Tu email" required aria-required="true">
+                        <button type="submit" class="btn btn-primary" aria-label="Suscribirse al newsletter">
+                            <i class="fas fa-paper-plane" aria-hidden="true"></i>
                         </button>
                     </form>
                 </div>
