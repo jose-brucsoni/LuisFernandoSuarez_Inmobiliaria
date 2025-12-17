@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes, viewport-fit=cover">
+    <meta name="description" content="Detalles de la propiedad - Luis Fernando Suarez Brucsoni">
+    <title>Detalles de la Propiedad | Luis Fernando Suarez Brucsoni</title>
+    
+    <!-- iOS Safari Meta Tags -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Inmueble">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="/static/css/inmueble.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar" role="navigation" aria-label="Navegación principal">
+        <div class="container">
+            <div class="nav-wrapper">
+                <a href="/index.html" class="logo" aria-label="Ir al inicio">
+                    <i class="fas fa-home" aria-hidden="true"></i>
+                    <span>Luis Fernando Suarez Brucsoni</span>
+                </a>
+                <ul class="nav-menu" id="navMenu" role="menubar">
+                    <li role="none"><a href="/index.html" role="menuitem">Inicio</a></li>
+                    <li role="none"><a href="/Portafolio.html" role="menuitem">Portafolio</a></li>
+                    <li role="none"><a href="/index.html#servicios" role="menuitem">Servicios</a></li>
+                    <li role="none"><a href="/index.html#contacto" role="menuitem" class="nav-cta">Contacto</a></li>
+                </ul>
+                <button class="hamburger" id="hamburger" aria-label="Abrir menú de navegación" aria-expanded="false" aria-controls="navMenu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Breadcrumb -->
+    <section class="breadcrumb-section">
+        <div class="container">
+            <nav class="breadcrumb" aria-label="Breadcrumb">
+                <a href="/index.html"><i class="fas fa-home"></i> Inicio</a>
+                <i class="fas fa-chevron-right"></i>
+                <a href="/Portafolio.html">Portafolio</a>
+                <i class="fas fa-chevron-right"></i>
+                <span id="breadcrumbTitle">Propiedad</span>
+            </nav>
+        </div>
+    </section>
+
+    <!-- Image Gallery -->
+    <section class="gallery-section">
+        <div class="container-full">
+            <div class="gallery-grid" id="galleryGrid">
+                <!-- Main Image -->
+                <div class="gallery-main" id="galleryMain">
+                    <div class="gallery-main-image">
+                        <img src="" alt="Imagen principal" id="mainImage">
+                        <button class="gallery-fullscreen" id="btnFullscreen" aria-label="Ver en pantalla completa">
+                            <i class="fas fa-expand"></i>
+                        </button>
+                    </div>
+                    <div class="gallery-nav">
+                        <button class="gallery-nav-btn gallery-prev" id="galleryPrev">
+                            <i class="fas fa-chevron-left"></i>
+                        </button>
+                        <button class="gallery-nav-btn gallery-next" id="galleryNext">
+                            <i class="fas fa-chevron-right"></i>
+                        </button>
+                    </div>
+                    <div class="gallery-counter">
+                        <span id="currentImage">1</span> / <span id="totalImages">1</span>
+                    </div>
+                </div>
+                
+                <!-- Thumbnail Grid -->
+                <div class="gallery-thumbnails" id="galleryThumbnails">
+                    <!-- Las miniaturas se cargarán dinámicamente -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Property Details -->
+    <section class="property-details-section">
+        <div class="container">
+            <div class="property-layout">
+                <!-- Main Content -->
+                <div class="property-main">
+                    <!-- Header -->
+                    <div class="property-header">
+                        <div class="property-title-group">
+                            <div class="property-badge" id="propertyBadge">Venta</div>
+                            <h1 class="property-title" id="propertyTitle">Casa Moderna en Zona Norte</h1>
+                            <p class="property-location">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <span id="propertyLocation">Zona Norte, Ciudad</span>
+                            </p>
+                        </div>
+                        <div class="property-price-group">
+                            <div class="property-price" id="propertyPrice">$250,000</div>
+                            <div class="property-price-label">Precio Total</div>
+                        </div>
+                    </div>
+
+                    <!-- Quick Stats -->
+                    <div class="quick-stats">
+                        <div class="stat-card">
+                            <i class="fas fa-bed"></i>
+                            <div class="stat-content">
+                                <span class="stat-value" id="statBedrooms">3</span>
+                                <span class="stat-label">Habitaciones</span>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <i class="fas fa-bath"></i>
+                            <div class="stat-content">
+                                <span class="stat-value" id="statBathrooms">2</span>
+                                <span class="stat-label">Baños</span>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <i class="fas fa-ruler-combined"></i>
+                            <div class="stat-content">
+                                <span class="stat-value" id="statArea">180</span>
+                                <span class="stat-label">m²</span>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <i class="fas fa-calendar-alt"></i>
+                            <div class="stat-content">
+                                <span class="stat-value" id="statYear">2022</span>
+                                <span class="stat-label">Año</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Description -->
+                    <div class="property-section">
+                        <h2 class="section-title">
+                            <i class="fas fa-align-left"></i>
+                            Descripción
+                        </h2>
+                        <div class="property-description" id="propertyDescription">
+                            <p>Hermosa casa moderna con acabados de primera calidad. Cuenta con amplios espacios, excelente iluminación natural y una ubicación privilegiada.</p>
+                        </div>
+                    </div>
+
+                    <!-- Features -->
+                    <div class="property-section">
+                        <h2 class="section-title">
+                            <i class="fas fa-check-circle"></i>
+                            Características
+                        </h2>
+                        <div class="features-grid" id="featuresGrid">
+                            <!-- Las características se cargarán dinámicamente -->
+                        </div>
+                    </div>
+
+                    <!-- Amenities -->
+                    <div class="property-section">
+                        <h2 class="section-title">
+                            <i class="fas fa-star"></i>
+                            Amenidades
+                        </h2>
+                        <div class="amenities-grid" id="amenitiesGrid">
+                            <!-- Las amenidades se cargarán dinámicamente -->
+                        </div>
+                    </div>
+
+                    <!-- Virtual Tour -->
+                    <div class="property-section" id="virtualTourSection" style="display: none;">
+                        <h2 class="section-title">
+                            <i class="fas fa-vr-cardboard"></i>
+                            Tour Virtual 360°
+                        </h2>
+                        <div class="virtual-tour-container">
+                            <div class="virtual-tour-placeholder" id="virtualTourPlaceholder">
+                                <i class="fas fa-vr-cardboard"></i>
+                                <p>Tour virtual disponible</p>
+                                <button class="btn btn-primary" id="btnStartTour">
+                                    <i class="fas fa-play"></i>
+                                    Iniciar Tour Virtual
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Location Map -->
+                    <div class="property-section">
+                        <h2 class="section-title">
+                            <i class="fas fa-map-marked-alt"></i>
+                            Ubicación
+                        </h2>
+                        <div class="map-container" id="mapContainer">
+                            <div class="map-placeholder">
+                                <i class="fas fa-map-marked-alt"></i>
+                                <p id="mapAddress">Dirección de la propiedad</p>
+                                <a href="#" id="mapLink" target="_blank" class="btn btn-secondary">
+                                    <i class="fas fa-directions"></i>
+                                    Ver en Google Maps
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Sidebar -->
+                <div class="property-sidebar">
+                    <!-- Contact Card -->
+                    <div class="sidebar-card contact-card">
+                        <div class="card-header">
+                            <h3>¿Interesado en esta propiedad?</h3>
+                            <p>Contáctame para más información</p>
+                        </div>
+                        <form class="contact-form" id="propertyContactForm">
+                            <div class="form-group">
+                                <input type="text" name="name" placeholder="Tu nombre" required>
+                            </div>
+                            <div class="form-group">
+                                <input type="email" name="email" placeholder="Tu email" required>
+                            </div>
+                            <div class="form-group">
+                                <input type="tel" name="phone" placeholder="Tu teléfono">
+                            </div>
+                            <div class="form-group">
+                                <textarea name="message" rows="4" placeholder="Mensaje (opcional)"></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-primary btn-block">
+                                <i class="fas fa-paper-plane"></i>
+                                Enviar Consulta
+                            </button>
+                        </form>
+                        <div class="contact-methods">
+                            <a href="tel:+15551234567" class="contact-method">
+                                <i class="fas fa-phone"></i>
+                                <span>Llamar Ahora</span>
+                            </a>
+                            <a href="https://wa.me/15551234567" target="_blank" class="contact-method">
+                                <i class="fab fa-whatsapp"></i>
+                                <span>WhatsApp</span>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Share Card -->
+                    <div class="sidebar-card share-card">
+                        <h3>Compartir Propiedad</h3>
+                        <div class="share-buttons">
+                            <button class="share-btn" id="shareWhatsapp" aria-label="Compartir en WhatsApp">
+                                <i class="fab fa-whatsapp"></i>
+                            </button>
+                            <button class="share-btn" id="shareFacebook" aria-label="Compartir en Facebook">
+                                <i class="fab fa-facebook"></i>
+                            </button>
+                            <button class="share-btn" id="shareTwitter" aria-label="Compartir en Twitter">
+                                <i class="fab fa-twitter"></i>
+                            </button>
+                            <button class="share-btn" id="shareLink" aria-label="Copiar enlace">
+                                <i class="fas fa-link"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Info Card -->
+                    <div class="sidebar-card info-card">
+                        <h3>Información Adicional</h3>
+                        <div class="info-list">
+                            <div class="info-item">
+                                <span class="info-label">ID Propiedad:</span>
+                                <span class="info-value" id="infoId">LFS-001</span>
+                            </div>
+                            <div class="info-item">
+                                <span class="info-label">Publicado:</span>
+                                <span class="info-value" id="infoDate">Hace 3 días</span>
+                            </div>
+                            <div class="info-item">
+                                <span class="info-label">Vistas:</span>
+                                <span class="info-value" id="infoViews">156</span>
+                            </div>
+                            <div class="info-item">
+                                <span class="info-label">Estado:</span>
+                                <span class="info-value" id="infoStatus">Disponible</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Related Properties -->
+    <section class="related-properties">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Propiedades Similares</h2>
+                <p class="section-subtitle">Otras opciones que podrían interesarte</p>
+            </div>
+            <div class="properties-grid" id="relatedPropertiesGrid">
+                <!-- Las propiedades relacionadas se cargarán dinámicamente -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-logo">
+                        <i class="fas fa-home"></i>
+                        <span>Luis Fernando Suarez Brucsoni</span>
+                    </div>
+                    <p>Tu agente inmobiliario de confianza. Especialistas en compra, venta y asesoría de propiedades.</p>
+                    <div class="social-links">
+                        <a href="#" aria-label="Facebook" target="_blank"><i class="fab fa-facebook"></i></a>
+                        <a href="#" aria-label="Instagram" target="_blank"><i class="fab fa-instagram"></i></a>
+                        <a href="#" aria-label="LinkedIn" target="_blank"><i class="fab fa-linkedin"></i></a>
+                        <a href="#" aria-label="WhatsApp" target="_blank"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h3>Enlaces Rápidos</h3>
+                    <ul>
+                        <li><a href="/index.html">Inicio</a></li>
+                        <li><a href="/Portafolio.html">Portafolio</a></li>
+                        <li><a href="/index.html#servicios">Servicios</a></li>
+                        <li><a href="/index.html#contacto">Contacto</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Contacto</h3>
+                    <ul>
+                        <li><i class="fas fa-phone"></i> +1 (555) 123-4567</li>
+                        <li><i class="fas fa-envelope"></i> contacto@luisfernandosuarez.com</li>
+                        <li><i class="fas fa-map-marker-alt"></i> Av. Principal 123</li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Newsletter</h3>
+                    <p>Suscríbete para recibir las mejores ofertas</p>
+                    <form class="newsletter-form">
+                        <input type="email" placeholder="Tu email" required>
+                        <button type="submit" class="btn btn-primary">
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </form>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Luis Fernando Suarez Brucsoni. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <button id="backToTop" class="back-to-top" aria-label="Volver arriba">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <!-- Image Lightbox -->
+    <div class="lightbox" id="lightbox">
+        <button class="lightbox-close" id="lightboxClose">
+            <i class="fas fa-times"></i>
+        </button>
+        <button class="lightbox-nav lightbox-prev" id="lightboxPrev">
+            <i class="fas fa-chevron-left"></i>
+        </button>
+        <button class="lightbox-nav lightbox-next" id="lightboxNext">
+            <i class="fas fa-chevron-right"></i>
+        </button>
+        <img src="" alt="Imagen ampliada" id="lightboxImage">
+        <div class="lightbox-counter">
+            <span id="lightboxCurrent">1</span> / <span id="lightboxTotal">1</span>
+        </div>
+    </div>
+
+    <!-- JavaScript -->
+    <script src="/static/js/inmueble.js"></script>
+</body>
+</html>
+

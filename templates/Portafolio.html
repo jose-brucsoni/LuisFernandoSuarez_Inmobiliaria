@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes, viewport-fit=cover">
+    <meta name="description" content="Portafolio de propiedades - Luis Fernando Suarez. Encuentra casas en venta, alquiler y anticrético.">
+    <title>Portafolio de Propiedades | Luis Fernando Suarez Brucsoni</title>
+    
+    <!-- iOS Safari Meta Tags -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Portafolio">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="/static/css/portafolio.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar" role="navigation" aria-label="Navegación principal">
+        <div class="container">
+            <div class="nav-wrapper">
+                <a href="/index.html" class="logo" aria-label="Ir al inicio">
+                    <i class="fas fa-home" aria-hidden="true"></i>
+                    <span>Luis Fernando Suarez Brucsoni</span>
+                </a>
+                <ul class="nav-menu" id="navMenu" role="menubar">
+                    <li role="none"><a href="/index.html" role="menuitem">Inicio</a></li>
+                    <li role="none"><a href="/Portafolio.html" class="active" role="menuitem">Portafolio</a></li>
+                    <li role="none"><a href="/index.html#servicios" role="menuitem">Servicios</a></li>
+                    <li role="none"><a href="/index.html#sobre-mi" role="menuitem">Sobre Mí</a></li>
+                    <li role="none"><a href="/index.html#contacto" role="menuitem" class="nav-cta">Contacto</a></li>
+                </ul>
+                <button class="hamburger" id="hamburger" aria-label="Abrir menú de navegación" aria-expanded="false" aria-controls="navMenu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Hero -->
+    <section class="page-hero">
+        <div class="hero-overlay"></div>
+        <div class="container">
+            <div class="hero-content">
+                <h1 class="hero-title">Nuestro Portafolio</h1>
+                <p class="hero-subtitle">Encuentra la propiedad perfecta para ti</p>
+                <div class="hero-stats">
+                    <div class="stat-item">
+                        <span class="stat-number" id="totalProperties">0</span>
+                        <span class="stat-label">Propiedades</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number" id="totalCities">3</span>
+                        <span class="stat-label">Zonas</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">100%</span>
+                        <span class="stat-label">Verificadas</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Filters Section -->
+    <section class="filters-section">
+        <div class="container">
+            <!-- Mobile Filter Toggle -->
+            <button class="mobile-filter-toggle" id="mobileFilterToggle">
+                <i class="fas fa-sliders-h"></i>
+                <span>Filtros</span>
+                <span class="filter-count" id="filterCount" style="display: none;">0</span>
+            </button>
+
+            <!-- Filters Container -->
+            <div class="filters-container" id="filtersContainer">
+                <div class="filters-header">
+                    <div class="filters-title-group">
+                        <h2 class="filters-title">
+                            <i class="fas fa-filter" aria-hidden="true"></i>
+                            Filtrar Propiedades
+                        </h2>
+                        <p class="filters-subtitle">Encuentra tu propiedad ideal</p>
+                    </div>
+                    <div class="filters-actions">
+                        <button class="btn-reset-filters" id="btnResetFilters">
+                            <i class="fas fa-redo" aria-hidden="true"></i>
+                            <span>Limpiar</span>
+                        </button>
+                        <button class="btn-close-filters" id="btnCloseFilters">
+                            <i class="fas fa-times"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="filters-content">
+                    <!-- Búsqueda Principal -->
+                    <div class="filter-group filter-search-main">
+                        <div class="search-box-main">
+                            <i class="fas fa-search" aria-hidden="true"></i>
+                            <input type="text" id="searchInput" placeholder="Buscar por ubicación, título o descripción..." class="filter-input-main">
+                            <button class="search-clear" id="searchClear" style="display: none;">
+                                <i class="fas fa-times-circle"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Categoría Destacada -->
+                    <div class="filter-group filter-category-featured">
+                        <label class="filter-label">
+                            <i class="fas fa-tag"></i>
+                            Categoría
+                        </label>
+                        <div class="filter-options-featured">
+                            <button class="filter-chip-featured active" data-filter="categoria" data-value="todas">
+                                <div class="chip-icon"><i class="fas fa-th"></i></div>
+                                <div class="chip-content">
+                                    <span class="chip-title">Todas</span>
+                                    <span class="chip-subtitle">Ver todo</span>
+                                </div>
+                            </button>
+                            <button class="filter-chip-featured" data-filter="categoria" data-value="venta">
+                                <div class="chip-icon"><i class="fas fa-handshake"></i></div>
+                                <div class="chip-content">
+                                    <span class="chip-title">Venta</span>
+                                    <span class="chip-subtitle">Compra</span>
+                                </div>
+                            </button>
+                            <button class="filter-chip-featured" data-filter="categoria" data-value="alquiler">
+                                <div class="chip-icon"><i class="fas fa-key"></i></div>
+                                <div class="chip-content">
+                                    <span class="chip-title">Alquiler</span>
+                                    <span class="chip-subtitle">Renta</span>
+                                </div>
+                            </button>
+                            <button class="filter-chip-featured" data-filter="categoria" data-value="anticretico">
+                                <div class="chip-icon"><i class="fas fa-exchange-alt"></i></div>
+                                <div class="chip-content">
+                                    <span class="chip-title">Anticrético</span>
+                                    <span class="chip-subtitle">Depósito</span>
+                                </div>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="filters-divider"></div>
+
+                    <!-- Filtros Avanzados -->
+                    <div class="filters-grid">
+                        <!-- Precio -->
+                        <div class="filter-group">
+                            <label class="filter-label">
+                                <i class="fas fa-dollar-sign"></i>
+                                Rango de Precio
+                            </label>
+                            <div class="filter-range">
+                                <div class="range-input-group">
+                                    <span class="range-prefix">$</span>
+                                    <input type="number" id="precioMin" placeholder="Mínimo" class="filter-input">
+                                </div>
+                                <span class="range-separator">—</span>
+                                <div class="range-input-group">
+                                    <span class="range-prefix">$</span>
+                                    <input type="number" id="precioMax" placeholder="Máximo" class="filter-input">
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Habitaciones -->
+                        <div class="filter-group">
+                            <label class="filter-label">
+                                <i class="fas fa-bed"></i>
+                                Habitaciones
+                            </label>
+                            <div class="filter-options">
+                                <button class="filter-chip active" data-filter="habitaciones" data-value="todas">
+                                    Todas
+                                </button>
+                                <button class="filter-chip" data-filter="habitaciones" data-value="1">
+                                    1+
+                                </button>
+                                <button class="filter-chip" data-filter="habitaciones" data-value="2">
+                                    2+
+                                </button>
+                                <button class="filter-chip" data-filter="habitaciones" data-value="3">
+                                    3+
+                                </button>
+                                <button class="filter-chip" data-filter="habitaciones" data-value="4">
+                                    4+
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Baños -->
+                        <div class="filter-group">
+                            <label class="filter-label">
+                                <i class="fas fa-bath"></i>
+                                Baños
+                            </label>
+                            <div class="filter-options">
+                                <button class="filter-chip active" data-filter="banos" data-value="todas">
+                                    Todos
+                                </button>
+                                <button class="filter-chip" data-filter="banos" data-value="1">
+                                    1+
+                                </button>
+                                <button class="filter-chip" data-filter="banos" data-value="2">
+                                    2+
+                                </button>
+                                <button class="filter-chip" data-filter="banos" data-value="3">
+                                    3+
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Ordenar por -->
+                        <div class="filter-group">
+                            <label class="filter-label">
+                                <i class="fas fa-sort-amount-down"></i>
+                                Ordenar por
+                            </label>
+                            <div class="select-wrapper">
+                                <select id="sortBy" class="filter-select">
+                                    <option value="recientes">Más Recientes</option>
+                                    <option value="precio-asc">Precio: Menor a Mayor</option>
+                                    <option value="precio-desc">Precio: Mayor a Menor</option>
+                                    <option value="area-desc">Área: Mayor a Menor</option>
+                                    <option value="habitaciones-desc">Más Habitaciones</option>
+                                </select>
+                                <i class="fas fa-chevron-down select-icon"></i>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Apply Button (Mobile) -->
+                    <button class="btn-apply-filters" id="btnApplyFilters">
+                        <i class="fas fa-check"></i>
+                        Aplicar Filtros
+                    </button>
+                </div>
+
+                <div class="results-info">
+                    <div class="results-count">
+                        <i class="fas fa-home"></i>
+                        <span id="resultsCount">0 propiedades encontradas</span>
+                    </div>
+                    <div class="active-filters" id="activeFilters">
+                        <!-- Los filtros activos se mostrarán aquí -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Properties Grid -->
+    <section class="properties-section">
+        <div class="container">
+            <div class="properties-grid" id="propertiesGrid">
+                <!-- Las propiedades se cargarán dinámicamente -->
+            </div>
+
+            <!-- Loading State -->
+            <div class="loading-state" id="loadingState" style="display: none;">
+                <i class="fas fa-spinner fa-spin"></i>
+                <p>Cargando propiedades...</p>
+            </div>
+
+            <!-- Empty State -->
+            <div class="empty-state" id="emptyState" style="display: none;">
+                <i class="fas fa-home"></i>
+                <h3>No se encontraron propiedades</h3>
+                <p>Intenta ajustar los filtros de búsqueda</p>
+                <button class="btn btn-primary" onclick="resetAllFilters()">
+                    <i class="fas fa-redo" aria-hidden="true"></i>
+                    Limpiar Filtros
+                </button>
+            </div>
+
+            <!-- Pagination -->
+            <div class="pagination-container" id="paginationContainer">
+                <button class="pagination-btn" id="btnPrevPage" disabled>
+                    <i class="fas fa-chevron-left" aria-hidden="true"></i>
+                    Anterior
+                </button>
+                <div class="pagination-pages" id="paginationPages">
+                    <!-- Los números de página se generarán dinámicamente -->
+                </div>
+                <button class="pagination-btn" id="btnNextPage">
+                    Siguiente
+                    <i class="fas fa-chevron-right" aria-hidden="true"></i>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <div class="cta-content">
+                <h2 class="cta-title">¿No encuentras lo que buscas?</h2>
+                <p class="cta-text">Contáctame y te ayudaré a encontrar la propiedad perfecta para ti</p>
+                <a href="/index.html#contacto" class="btn btn-primary btn-lg">
+                    <i class="fas fa-phone" aria-hidden="true"></i>
+                    Contactar Ahora
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-logo">
+                        <i class="fas fa-home"></i>
+                        <span>Luis Fernando Suarez Brucsoni</span>
+                    </div>
+                    <p>Tu agente inmobiliario de confianza. Especialistas en compra, venta y asesoría de propiedades.</p>
+                    <div class="social-links">
+                        <a href="#" aria-label="Facebook" target="_blank" rel="noopener noreferrer"><i class="fab fa-facebook"></i></a>
+                        <a href="#" aria-label="Instagram" target="_blank" rel="noopener noreferrer"><i class="fab fa-instagram"></i></a>
+                        <a href="#" aria-label="LinkedIn" target="_blank" rel="noopener noreferrer"><i class="fab fa-linkedin"></i></a>
+                        <a href="#" aria-label="WhatsApp" target="_blank" rel="noopener noreferrer"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h3>Enlaces Rápidos</h3>
+                    <ul>
+                        <li><a href="/index.html">Inicio</a></li>
+                        <li><a href="/Portafolio.html">Portafolio</a></li>
+                        <li><a href="/index.html#servicios">Servicios</a></li>
+                        <li><a href="/index.html#sobre-mi">Sobre Mí</a></li>
+                        <li><a href="/index.html#contacto">Contacto</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Categorías</h3>
+                    <ul>
+                        <li><a href="#" onclick="filterByCategory('venta'); return false;">Propiedades en Venta</a></li>
+                        <li><a href="#" onclick="filterByCategory('alquiler'); return false;">Propiedades en Alquiler</a></li>
+                        <li><a href="#" onclick="filterByCategory('anticretico'); return false;">Propiedades en Anticrético</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Newsletter</h3>
+                    <p>Suscríbete para recibir las mejores ofertas</p>
+                    <form class="newsletter-form" id="newsletterForm" aria-label="Formulario de suscripción">
+                        <input type="email" placeholder="Tu email" required aria-required="true">
+                        <button type="submit" class="btn btn-primary" aria-label="Suscribirse">
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </form>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Luis Fernando Suarez Brucsoni. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <button id="backToTop" class="back-to-top" aria-label="Volver arriba">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <!-- JavaScript -->
+    <script src="/static/js/portafolio.js"></script>
+</body>
+</html>
+
