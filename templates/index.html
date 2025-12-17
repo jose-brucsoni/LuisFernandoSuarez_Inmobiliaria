@@ -2,9 +2,18 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes, viewport-fit=cover">
     <meta name="description" content="Luis Fernando Suarez Brucsoni - Agente Inmobiliario profesional. Compra, venta y asesoría de propiedades. Encuentra tu hogar ideal con el mejor servicio">
     <title>Luis Fernando Suarez Brucsoni - Agente Inmobiliario | Compra y Venta de Propiedades</title>
+    
+    <!-- iOS Safari Meta Tags -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Luis F. Suarez">
+    <meta name="format-detection" content="telephone=no">
+    
+    <!-- Prevent text size adjustment on iOS -->
+    <meta name="apple-touch-fullscreen" content="yes">
     
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -42,6 +51,7 @@
                 <ul class="nav-menu" id="navMenu" role="menubar">
                     <li role="none"><a href="#inicio" role="menuitem" aria-label="Ir a la sección de inicio">Inicio</a></li>
                     <li role="none"><a href="#propiedades" role="menuitem" aria-label="Ver propiedades disponibles">Propiedades</a></li>
+                    <li role="none"><a href="#categorias" role="menuitem" aria-label="Explorar categorías">Categorías</a></li>
                     <li role="none"><a href="#servicios" role="menuitem" aria-label="Conocer nuestros servicios">Servicios</a></li>
                     <li role="none"><a href="#sobre-mi" role="menuitem" aria-label="Conocer más sobre mí">Sobre Mí</a></li>
                     <li role="none"><a href="#contacto" role="menuitem" aria-label="Ponerse en contacto" class="nav-cta">Contacto</a></li>
@@ -61,39 +71,33 @@
             <div class="container">
                 <div class="hero-wrapper">
                     <div class="hero-text">
-                        <h1 class="hero-title">
-                            Encuentra tu <span class="highlight">hogar ideal</span> o invierte con confianza
-                        </h1>
-                        <p class="hero-subtitle">
-                            Ya sea que busques la casa de tus sueños para tu familia o una oportunidad de inversión rentable, 
-                            estoy aquí para guiarte en cada paso. Con más de 10 años de experiencia y cientos de transacciones 
-                            exitosas, te ayudo a tomar la mejor decisión inmobiliaria.
-                        </p>
+                <h1 class="hero-title">
+                            Encuentra tu <span class="highlight">hogar ideal</span> </h1>
                         <p class="hero-subdescription">
                             Tu éxito es mi compromiso. Trabajemos juntos para hacer realidad tus proyectos inmobiliarios.
-                        </p>
-                        <div class="hero-buttons">
+                </p>
+                <div class="hero-buttons">
                             <a href="#propiedades" class="btn btn-primary" aria-label="Explorar propiedades disponibles">
                                 <i class="fas fa-search" aria-hidden="true"></i> Ver Propiedades
-                            </a>
+                    </a>
                             <a href="#contacto" class="btn btn-secondary" aria-label="Contactar ahora">
                                 <i class="fas fa-phone" aria-hidden="true"></i> Contactar Ahora
-                            </a>
-                        </div>
+                    </a>
+                </div>
                         <div class="hero-trust-badges">
                             <div class="trust-badge">
                                 <i class="fas fa-shield-alt" aria-hidden="true"></i>
                                 <span>Transacciones Seguras</span>
-                            </div>
+            </div>
                             <div class="trust-badge">
                                 <i class="fas fa-award" aria-hidden="true"></i>
                                 <span>10+ Años de Experiencia</span>
-                            </div>
+        </div>
                             <div class="trust-badge">
                                 <i class="fas fa-users" aria-hidden="true"></i>
-                                <span>500+ Clientes Satisfechos</span>
-                            </div>
-                        </div>
+                                <span>100+ Clientes Satisfechos</span>
+        </div>
+            </div>
                     </div>
                     <div class="hero-image-wrapper">
                         <img src="/static/images/SFDP_Nano_SosteniendoLlave.png" alt="Luis Fernando Suarez Brucsoni - Agente Inmobiliario" class="hero-agent-image">
@@ -104,79 +108,6 @@
         <a href="#servicios" class="scroll-indicator" aria-label="Desplazarse a la siguiente sección">
             <i class="fas fa-chevron-down" aria-hidden="true"></i>
         </a>
-    </section>
-
-    <!-- Services Section -->
-    <section id="servicios" class="features">
-        <div class="container">
-            <div class="section-header">
-                <span class="section-label">Lo que ofrecemos</span>
-                <h2 class="section-title">Nuestros Servicios</h2>
-                <p class="section-subtitle">Soluciones completas y personalizadas para todas tus necesidades inmobiliarias</p>
-            </div>
-            <div class="features-grid">
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-home" aria-hidden="true"></i>
-                    </div>
-                    <h3>Compra de Propiedades</h3>
-                    <p>Te ayudamos a encontrar la propiedad perfecta que se ajuste a tus necesidades y presupuesto. Búsqueda personalizada y acompañamiento en todo el proceso.</p>
-                    <a href="#contacto" class="feature-link" aria-label="Solicitar información sobre compra de propiedades">
-                        Saber más <i class="fas fa-arrow-right" aria-hidden="true"></i>
-                    </a>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-handshake" aria-hidden="true"></i>
-                    </div>
-                    <h3>Venta de Propiedades</h3>
-                    <p>Maximiza el valor de tu propiedad con nuestra estrategia de marketing y negociación. Gestión completa desde la valoración hasta el cierre de la venta.</p>
-                    <a href="#contacto" class="feature-link" aria-label="Solicitar información sobre venta de propiedades">
-                        Saber más <i class="fas fa-arrow-right" aria-hidden="true"></i>
-                    </a>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-clipboard-check" aria-hidden="true"></i>
-                    </div>
-                    <h3>Asesoría Inmobiliaria</h3>
-                    <p>Asesoramiento profesional en inversiones, trámites legales, financiamiento y todo lo relacionado con el mercado inmobiliario.</p>
-                    <a href="#contacto" class="feature-link" aria-label="Solicitar asesoría inmobiliaria">
-                        Saber más <i class="fas fa-arrow-right" aria-hidden="true"></i>
-                    </a>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-calculator" aria-hidden="true"></i>
-                    </div>
-                    <h3>Tasaciones Profesionales</h3>
-                    <p>Valuación precisa de tu propiedad con análisis de mercado, ubicación y características. Informes detallados y confiables.</p>
-                    <a href="#contacto" class="feature-link" aria-label="Solicitar tasación profesional">
-                        Saber más <i class="fas fa-arrow-right" aria-hidden="true"></i>
-                    </a>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-key" aria-hidden="true"></i>
-                    </div>
-                    <h3>Gestión de Alquileres</h3>
-                    <p>Administración completa de propiedades en alquiler. Búsqueda de inquilinos, contratos y mantenimiento de la propiedad.</p>
-                    <a href="#contacto" class="feature-link" aria-label="Solicitar información sobre gestión de alquileres">
-                        Saber más <i class="fas fa-arrow-right" aria-hidden="true"></i>
-                    </a>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-vr-cardboard" aria-hidden="true"></i>
-                    </div>
-                    <h3>Paseos Virtuales 360°</h3>
-                    <p>Visita propiedades desde cualquier lugar con nuestra tecnología de paseos virtuales. Una herramienta adicional para conocer mejor las propiedades.</p>
-                    <a href="#propiedades" class="feature-link" aria-label="Ver propiedades con paseos virtuales">
-                        Explorar <i class="fas fa-arrow-right" aria-hidden="true"></i>
-                    </a>
-                </div>
-            </div>
-        </div>
     </section>
 
     <!-- Properties Section -->
@@ -268,6 +199,178 @@
             </div>
         </div>
     </section>
+
+    <!-- Categories Section -->
+    <section id="categorias" class="categories">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-label">Explora por tipo</span>
+                <h2 class="section-title">Categorías</h2>
+                <p class="section-subtitle">Encuentra la propiedad perfecta según tus necesidades</p>
+            </div>
+            <div class="categories-grid">
+                <div class="category-card" data-category="venta">
+                    <div class="category-icon">
+                        <i class="fas fa-handshake" aria-hidden="true"></i>
+                    </div>
+                    <h3>Venta</h3>
+                    <p>Propiedades disponibles para compra</p>
+                    <div class="category-subcategories" id="subcategories-venta">
+                        <a href="#contacto" class="subcategory-btn" aria-label="Ver propiedades en venta para familias">
+                            <i class="fas fa-home" aria-hidden="true"></i> Para Familias
+                        </a>
+                        <a href="#contacto" class="subcategory-btn" aria-label="Ver propiedades en venta para empresas">
+                            <i class="fas fa-building" aria-hidden="true"></i> Para Empresas
+                        </a>
+                        <a href="#contacto" class="subcategory-btn" aria-label="Ver propiedades en venta para invertir">
+                            <i class="fas fa-chart-line" aria-hidden="true"></i> Para Invertir
+                        </a>
+                        <a href="#contacto" class="subcategory-btn" aria-label="Ver todas las propiedades en venta">
+                            <i class="fas fa-th" aria-hidden="true"></i> Todos
+                        </a>
+                        <a href="#contacto" class="subcategory-btn" aria-label="Ver otras opciones en venta">
+                            <i class="fas fa-ellipsis-h" aria-hidden="true"></i> Otros
+                        </a>
+                    </div>
+                    <button class="category-toggle" aria-label="Ver opciones de venta" aria-expanded="false">
+                        <span class="toggle-text">Ver Opciones</span>
+                        <i class="fas fa-chevron-down" aria-hidden="true"></i>
+                    </button>
+                </div>
+                <div class="category-card" data-category="alquileres">
+                    <div class="category-icon">
+                        <i class="fas fa-key" aria-hidden="true"></i>
+                    </div>
+                    <h3>Alquileres</h3>
+                    <p>Propiedades disponibles para alquiler</p>
+                    <div class="category-subcategories" id="subcategories-alquileres">
+                        <a href="#contacto" class="subcategory-btn" aria-label="Ver propiedades en alquiler para familias">
+                            <i class="fas fa-home" aria-hidden="true"></i> Para Familias
+                        </a>
+                        <a href="#contacto" class="subcategory-btn" aria-label="Ver propiedades en alquiler para empresas">
+                            <i class="fas fa-building" aria-hidden="true"></i> Para Empresas
+                        </a>
+                        <a href="#contacto" class="subcategory-btn" aria-label="Ver propiedades en alquiler para invertir">
+                            <i class="fas fa-chart-line" aria-hidden="true"></i> Para Invertir
+                        </a>
+                        <a href="#contacto" class="subcategory-btn" aria-label="Ver todas las propiedades en alquiler">
+                            <i class="fas fa-th" aria-hidden="true"></i> Todos
+                        </a>
+                        <a href="#contacto" class="subcategory-btn" aria-label="Ver otras opciones en alquiler">
+                            <i class="fas fa-ellipsis-h" aria-hidden="true"></i> Otros
+                        </a>
+                    </div>
+                    <button class="category-toggle" aria-label="Ver opciones de alquileres" aria-expanded="false">
+                        <span class="toggle-text">Ver Opciones</span>
+                        <i class="fas fa-chevron-down" aria-hidden="true"></i>
+                    </button>
+                </div>
+                <div class="category-card" data-category="anticreticos">
+                    <div class="category-icon">
+                        <i class="fas fa-exchange-alt" aria-hidden="true"></i>
+                    </div>
+                    <h3>Anticréticos</h3>
+                    <p>Propiedades disponibles en anticrético</p>
+                    <div class="category-subcategories" id="subcategories-anticreticos">
+                        <a href="#contacto" class="subcategory-btn" aria-label="Ver propiedades en anticrético para familias">
+                            <i class="fas fa-home" aria-hidden="true"></i> Para Familias
+                        </a>
+                        <a href="#contacto" class="subcategory-btn" aria-label="Ver propiedades en anticrético para empresas">
+                            <i class="fas fa-building" aria-hidden="true"></i> Para Empresas
+                        </a>
+                        <a href="#contacto" class="subcategory-btn" aria-label="Ver propiedades en anticrético para invertir">
+                            <i class="fas fa-chart-line" aria-hidden="true"></i> Para Invertir
+                        </a>
+                        <a href="#contacto" class="subcategory-btn" aria-label="Ver todas las propiedades en anticrético">
+                            <i class="fas fa-th" aria-hidden="true"></i> Todos
+                        </a>
+                        <a href="#contacto" class="subcategory-btn" aria-label="Ver otras opciones en anticrético">
+                            <i class="fas fa-ellipsis-h" aria-hidden="true"></i> Otros
+                        </a>
+                    </div>
+                    <button class="category-toggle" aria-label="Ver opciones de anticréticos" aria-expanded="false">
+                        <span class="toggle-text">Ver Opciones</span>
+                        <i class="fas fa-chevron-down" aria-hidden="true"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="servicios" class="features">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-label">Lo que ofrecemos</span>
+                <h2 class="section-title">Nuestros Servicios</h2>
+                <p class="section-subtitle">Soluciones completas y personalizadas para todas tus necesidades inmobiliarias</p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-home" aria-hidden="true"></i>
+                    </div>
+                    <h3>Compra de Propiedades</h3>
+                    <p>Te ayudamos a encontrar la propiedad perfecta que se ajuste a tus necesidades y presupuesto. Búsqueda personalizada y acompañamiento en todo el proceso.</p>
+                    <a href="#contacto" class="feature-link" aria-label="Solicitar información sobre compra de propiedades">
+                        Saber más <i class="fas fa-arrow-right" aria-hidden="true"></i>
+                    </a>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-handshake" aria-hidden="true"></i>
+                    </div>
+                    <h3>Venta de Propiedades</h3>
+                    <p>Maximiza el valor de tu propiedad con nuestra estrategia de marketing y negociación. Gestión completa desde la valoración hasta el cierre de la venta.</p>
+                    <a href="#contacto" class="feature-link" aria-label="Solicitar información sobre venta de propiedades">
+                        Saber más <i class="fas fa-arrow-right" aria-hidden="true"></i>
+                    </a>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-clipboard-check" aria-hidden="true"></i>
+                    </div>
+                    <h3>Asesoría Inmobiliaria</h3>
+                    <p>Asesoramiento profesional en inversiones, trámites legales, financiamiento y todo lo relacionado con el mercado inmobiliario.</p>
+                    <a href="#contacto" class="feature-link" aria-label="Solicitar asesoría inmobiliaria">
+                        Saber más <i class="fas fa-arrow-right" aria-hidden="true"></i>
+                    </a>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-calculator" aria-hidden="true"></i>
+                    </div>
+                    <h3>Tasaciones Profesionales</h3>
+                    <p>Valuación precisa de tu propiedad con análisis de mercado, ubicación y características. Informes detallados y confiables.</p>
+                    <a href="#contacto" class="feature-link" aria-label="Solicitar tasación profesional">
+                        Saber más <i class="fas fa-arrow-right" aria-hidden="true"></i>
+                    </a>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-key" aria-hidden="true"></i>
+                    </div>
+                    <h3>Gestión de Alquileres</h3>
+                    <p>Administración completa de propiedades en alquiler. Búsqueda de inquilinos, contratos y mantenimiento de la propiedad.</p>
+                    <a href="#contacto" class="feature-link" aria-label="Solicitar información sobre gestión de alquileres">
+                        Saber más <i class="fas fa-arrow-right" aria-hidden="true"></i>
+                    </a>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-vr-cardboard" aria-hidden="true"></i>
+                    </div>
+                    <h3>Paseos Virtuales 360°</h3>
+                    <p>Visita propiedades desde cualquier lugar con nuestra tecnología de paseos virtuales. Una herramienta adicional para conocer mejor las propiedades.</p>
+                    <a href="#propiedades" class="feature-link" aria-label="Ver propiedades con paseos virtuales">
+                        Explorar <i class="fas fa-arrow-right" aria-hidden="true"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+   
 
     <!-- About Section -->
     <section id="sobre-mi" class="about">
@@ -408,6 +511,7 @@
                     <ul>
                         <li><a href="#inicio">Inicio</a></li>
                         <li><a href="#propiedades">Propiedades</a></li>
+                        <li><a href="#categorias">Categorías</a></li>
                         <li><a href="#servicios">Servicios</a></li>
                         <li><a href="#sobre-mi">Sobre Mí</a></li>
                         <li><a href="#contacto">Contacto</a></li>

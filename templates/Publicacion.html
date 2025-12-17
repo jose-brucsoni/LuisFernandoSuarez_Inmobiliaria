@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes, viewport-fit=cover">
+    <meta name="description" content="Crear o editar publicación de propiedad">
+    <title>Gestión de Publicación | Luis Fernando Suarez</title>
+    
+    <!-- iOS Safari Meta Tags -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="/static/css/publicacion.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="page-header">
+        <div class="container">
+            <div class="header-content">
+                <a href="/Panel.html" class="btn-back-header">
+                    <i class="fas fa-arrow-left" aria-hidden="true"></i>
+                    <span>Volver al Panel</span>
+                </a>
+                <h1 class="page-title" id="pageTitle">Nueva Publicación</h1>
+                <div class="header-actions">
+                    <button class="btn-icon-header" id="btnDelete" style="display: none;" aria-label="Eliminar publicación">
+                        <i class="fas fa-trash" aria-hidden="true"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Progress Steps -->
+    <div class="progress-container">
+        <div class="container">
+            <div class="progress-steps">
+                <div class="step-item active" data-step="1">
+                    <div class="step-number">1</div>
+                    <div class="step-label">Datos de la Casa</div>
+                </div>
+                <div class="step-line"></div>
+                <div class="step-item" data-step="2">
+                    <div class="step-number">2</div>
+                    <div class="step-label">Categoría y Ubicación</div>
+                </div>
+                <div class="step-line"></div>
+                <div class="step-item" data-step="3">
+                    <div class="step-number">3</div>
+                    <div class="step-label">Imágenes y Paseo Virtual</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="container">
+            <form id="publicationForm" class="publication-form">
+                <!-- Step 1: Datos de la Casa -->
+                <div class="form-step active" id="step1" data-step="1">
+                    <div class="step-header">
+                        <h2 class="step-title">
+                            <i class="fas fa-home" aria-hidden="true"></i>
+                            Datos de la Propiedad
+                        </h2>
+                        <p class="step-description">Completa la información básica de la propiedad</p>
+                    </div>
+
+                    <div class="form-content">
+                        <div class="form-group">
+                            <label for="titulo" class="form-label">
+                                Título de la Publicación <span class="required">*</span>
+                            </label>
+                            <input 
+                                type="text" 
+                                id="titulo" 
+                                name="titulo" 
+                                class="form-control" 
+                                placeholder="Ej: Casa Moderna en Zona Norte"
+                                required
+                                aria-required="true"
+                            >
+                            <span class="form-help">Un título atractivo ayudará a captar más atención</span>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="precio" class="form-label">
+                                    Precio <span class="required">*</span>
+                                </label>
+                                <div class="input-group">
+                                    <span class="input-prefix">$</span>
+                                    <input 
+                                        type="number" 
+                                        id="precio" 
+                                        name="precio" 
+                                        class="form-control" 
+                                        placeholder="250000"
+                                        min="0"
+                                        step="0.01"
+                                        required
+                                        aria-required="true"
+                                    >
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="area" class="form-label">
+                                    Área Total (m²) <span class="required">*</span>
+                                </label>
+                                <div class="input-group">
+                                    <input 
+                                        type="number" 
+                                        id="area" 
+                                        name="area" 
+                                        class="form-control" 
+                                        placeholder="180"
+                                        min="0"
+                                        step="0.01"
+                                        required
+                                        aria-required="true"
+                                    >
+                                    <span class="input-suffix">m²</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="habitaciones" class="form-label">
+                                    <i class="fas fa-bed" aria-hidden="true"></i> Habitaciones
+                                </label>
+                                <input 
+                                    type="number" 
+                                    id="habitaciones" 
+                                    name="habitaciones" 
+                                    class="form-control" 
+                                    placeholder="3"
+                                    min="0"
+                                    aria-required="false"
+                                >
+                            </div>
+
+                            <div class="form-group">
+                                <label for="banos" class="form-label">
+                                    <i class="fas fa-bath" aria-hidden="true"></i> Baños
+                                </label>
+                                <input 
+                                    type="number" 
+                                    id="banos" 
+                                    name="banos" 
+                                    class="form-control" 
+                                    placeholder="2"
+                                    min="0"
+                                    aria-required="false"
+                                >
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="garajes" class="form-label">
+                                    <i class="fas fa-car" aria-hidden="true"></i> Garajes
+                                </label>
+                                <input 
+                                    type="number" 
+                                    id="garajes" 
+                                    name="garajes" 
+                                    class="form-control" 
+                                    placeholder="1"
+                                    min="0"
+                                    aria-required="false"
+                                >
+                            </div>
+
+                            <div class="form-group">
+                                <label for="pisos" class="form-label">
+                                    <i class="fas fa-layer-group" aria-hidden="true"></i> Pisos
+                                </label>
+                                <input 
+                                    type="number" 
+                                    id="pisos" 
+                                    name="pisos" 
+                                    class="form-control" 
+                                    placeholder="2"
+                                    min="1"
+                                    aria-required="false"
+                                >
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="antiguedad" class="form-label">
+                                Antigüedad (años)
+                            </label>
+                            <input 
+                                type="number" 
+                                id="antiguedad" 
+                                name="antiguedad" 
+                                class="form-control" 
+                                placeholder="5"
+                                min="0"
+                                aria-required="false"
+                            >
+                        </div>
+
+                        <div class="form-group">
+                            <label for="descripcion" class="form-label">
+                                Descripción Detallada <span class="required">*</span>
+                            </label>
+                            <textarea 
+                                id="descripcion" 
+                                name="descripcion" 
+                                class="form-control" 
+                                rows="6"
+                                placeholder="Describe las características principales de la propiedad, sus ventajas, ubicación, servicios cercanos, etc..."
+                                required
+                                aria-required="true"
+                            ></textarea>
+                            <span class="form-help">Mínimo 100 caracteres. Sé descriptivo para atraer más interesados.</span>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Características Adicionales</label>
+                            <div class="checkbox-grid">
+                                <label class="checkbox-item">
+                                    <input type="checkbox" name="caracteristicas" value="piscina">
+                                    <span><i class="fas fa-swimming-pool" aria-hidden="true"></i> Piscina</span>
+                                </label>
+                                <label class="checkbox-item">
+                                    <input type="checkbox" name="caracteristicas" value="jardin">
+                                    <span><i class="fas fa-tree" aria-hidden="true"></i> Jardín</span>
+                                </label>
+                                <label class="checkbox-item">
+                                    <input type="checkbox" name="caracteristicas" value="terraza">
+                                    <span><i class="fas fa-umbrella" aria-hidden="true"></i> Terraza</span>
+                                </label>
+                                <label class="checkbox-item">
+                                    <input type="checkbox" name="caracteristicas" value="seguridad">
+                                    <span><i class="fas fa-shield-alt" aria-hidden="true"></i> Seguridad 24/7</span>
+                                </label>
+                                <label class="checkbox-item">
+                                    <input type="checkbox" name="caracteristicas" value="ascensor">
+                                    <span><i class="fas fa-arrow-up" aria-hidden="true"></i> Ascensor</span>
+                                </label>
+                                <label class="checkbox-item">
+                                    <input type="checkbox" name="caracteristicas" value="gimnasio">
+                                    <span><i class="fas fa-dumbbell" aria-hidden="true"></i> Gimnasio</span>
+                                </label>
+                                <label class="checkbox-item">
+                                    <input type="checkbox" name="caracteristicas" value="parqueo">
+                                    <span><i class="fas fa-parking" aria-hidden="true"></i> Parqueo</span>
+                                </label>
+                                <label class="checkbox-item">
+                                    <input type="checkbox" name="caracteristicas" value="amueblado">
+                                    <span><i class="fas fa-couch" aria-hidden="true"></i> Amueblado</span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="step-actions">
+                        <button type="button" class="btn btn-secondary" onclick="window.location.href='/Panel.html'">
+                            <i class="fas fa-times" aria-hidden="true"></i> Cancelar
+                        </button>
+                        <button type="button" class="btn btn-primary" onclick="nextStep()">
+                            Siguiente
+                            <i class="fas fa-arrow-right" aria-hidden="true"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Step 2: Categoría y Ubicación -->
+                <div class="form-step" id="step2" data-step="2">
+                    <div class="step-header">
+                        <h2 class="step-title">
+                            <i class="fas fa-map-marker-alt" aria-hidden="true"></i>
+                            Categoría y Ubicación
+                        </h2>
+                        <p class="step-description">Define la categoría de la publicación y su ubicación exacta</p>
+                    </div>
+
+                    <div class="form-content">
+                        <div class="form-group">
+                            <label for="categoria" class="form-label">
+                                Categoría <span class="required">*</span>
+                            </label>
+                            <select 
+                                id="categoria" 
+                                name="categoria" 
+                                class="form-control" 
+                                required
+                                aria-required="true"
+                            >
+                                <option value="">Seleccionar categoría...</option>
+                                <option value="venta">Venta</option>
+                                <option value="alquiler">Alquiler</option>
+                                <option value="anticretico">Anticrético</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="subcategoria" class="form-label">
+                                Subcategoría
+                            </label>
+                            <select 
+                                id="subcategoria" 
+                                name="subcategoria" 
+                                class="form-control"
+                                aria-required="false"
+                            >
+                                <option value="">Seleccionar subcategoría...</option>
+                                <option value="familias">Para Familias</option>
+                                <option value="empresas">Para Empresas</option>
+                                <option value="invertir">Para Invertir</option>
+                                <option value="otros">Otros</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="estado" class="form-label">
+                                Estado de la Publicación <span class="required">*</span>
+                            </label>
+                            <select 
+                                id="estado" 
+                                name="estado" 
+                                class="form-control" 
+                                required
+                                aria-required="true"
+                            >
+                                <option value="draft">Borrador</option>
+                                <option value="active">Publicar Ahora</option>
+                                <option value="inactive">Guardar como Inactiva</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="ubicacion" class="form-label">
+                                Ubicación / Dirección <span class="required">*</span>
+                            </label>
+                            <input 
+                                type="text" 
+                                id="ubicacion" 
+                                name="ubicacion" 
+                                class="form-control" 
+                                placeholder="Ej: Zona Norte, Calle Principal #123"
+                                required
+                                aria-required="true"
+                            >
+                            <span class="form-help">Ingresa la dirección o zona de la propiedad</span>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="googleMapsLink" class="form-label">
+                                Enlace de Google Maps <span class="required">*</span>
+                            </label>
+                            <div class="input-group">
+                                <span class="input-prefix">
+                                    <i class="fab fa-google" aria-hidden="true"></i>
+                                </span>
+                                <input 
+                                    type="url" 
+                                    id="googleMapsLink" 
+                                    name="googleMapsLink" 
+                                    class="form-control" 
+                                    placeholder="https://maps.google.com/..."
+                                    required
+                                    aria-required="true"
+                                >
+                            </div>
+                            <span class="form-help">
+                                <i class="fas fa-info-circle" aria-hidden="true"></i>
+                                Copia el enlace compartir de Google Maps. 
+                                <a href="#" onclick="showMapsHelp(); return false;" class="help-link">
+                                    ¿Cómo obtener el enlace?
+                                </a>
+                            </span>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="previewMap" class="form-label">Vista Previa del Mapa</label>
+                            <div class="map-preview" id="mapPreview">
+                                <div class="map-placeholder">
+                                    <i class="fas fa-map-marked-alt" aria-hidden="true"></i>
+                                    <p>Ingresa el enlace de Google Maps para ver la vista previa</p>
+                                </div>
+                            </div>
+                            <button type="button" class="btn btn-secondary btn-sm" id="btnTestMap" onclick="testMapLink()">
+                                <i class="fas fa-external-link-alt" aria-hidden="true"></i>
+                                Probar Enlace
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="step-actions">
+                        <button type="button" class="btn btn-secondary" onclick="prevStep()">
+                            <i class="fas fa-arrow-left" aria-hidden="true"></i> Anterior
+                        </button>
+                        <button type="button" class="btn btn-primary" onclick="nextStep()">
+                            Siguiente
+                            <i class="fas fa-arrow-right" aria-hidden="true"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Step 3: Imágenes y Paseo Virtual -->
+                <div class="form-step" id="step3" data-step="3">
+                    <div class="step-header">
+                        <h2 class="step-title">
+                            <i class="fas fa-images" aria-hidden="true"></i>
+                            Imágenes y Paseo Virtual
+                        </h2>
+                        <p class="step-description">Sube las imágenes de la propiedad y crea el paseo virtual 360°</p>
+                    </div>
+
+                    <div class="form-content">
+                        <div class="form-group">
+                            <label class="form-label">
+                                Imagen Principal <span class="required">*</span>
+                            </label>
+                            <div class="upload-area" id="mainImageUpload">
+                                <input 
+                                    type="file" 
+                                    id="imagenPrincipal" 
+                                    name="imagenPrincipal" 
+                                    accept="image/*"
+                                    class="file-input"
+                                    required
+                                    aria-required="true"
+                                >
+                                <div class="upload-content">
+                                    <i class="fas fa-cloud-upload-alt" aria-hidden="true"></i>
+                                    <p>Haz clic para seleccionar o arrastra la imagen principal aquí</p>
+                                    <span class="upload-hint">JPG, PNG o WEBP (máx. 5MB)</span>
+                                </div>
+                                <div class="upload-preview" id="mainImagePreview" style="display: none;">
+                                    <img id="mainImagePreviewImg" src="" alt="Vista previa">
+                                    <button type="button" class="btn-remove-image" onclick="removeMainImage()">
+                                        <i class="fas fa-times" aria-hidden="true"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">
+                                Galería de Imágenes
+                            </label>
+                            <div class="upload-area upload-multiple" id="galleryUpload">
+                                <input 
+                                    type="file" 
+                                    id="galeriaImagenes" 
+                                    name="galeriaImagenes" 
+                                    accept="image/*"
+                                    multiple
+                                    class="file-input"
+                                    aria-required="false"
+                                >
+                                <div class="upload-content">
+                                    <i class="fas fa-images" aria-hidden="true"></i>
+                                    <p>Haz clic para seleccionar o arrastra múltiples imágenes aquí</p>
+                                    <span class="upload-hint">Máximo 10 imágenes (máx. 5MB cada una)</span>
+                                </div>
+                            </div>
+                            <div class="gallery-preview" id="galleryPreview"></div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">
+                                <i class="fas fa-vr-cardboard" aria-hidden="true"></i>
+                                Paseo Virtual 360°
+                            </label>
+                            <div class="virtual-tour-section">
+                                <div class="virtual-tour-info">
+                                    <p>Sube las imágenes para crear el paseo virtual interactivo</p>
+                                    <div class="upload-area upload-virtual" id="virtualTourUpload">
+                                        <input 
+                                            type="file" 
+                                            id="imagenesVirtual" 
+                                            name="imagenesVirtual" 
+                                            accept="image/*"
+                                            multiple
+                                            class="file-input"
+                                            aria-required="false"
+                                        >
+                                        <div class="upload-content">
+                                            <i class="fas fa-cube" aria-hidden="true"></i>
+                                            <p>Subir imágenes 360° para paseo virtual</p>
+                                            <span class="upload-hint">Imágenes panorámicas 360° (máx. 20 imágenes)</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="virtual-tour-preview" id="virtualTourPreview">
+                                    <p class="no-images-text">No hay imágenes 360° cargadas aún</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">
+                                <i class="fas fa-link" aria-hidden="true"></i>
+                                Enlace de Paseo Virtual (Opcional)
+                            </label>
+                            <input 
+                                type="url" 
+                                id="enlaceVirtual" 
+                                name="enlaceVirtual" 
+                                class="form-control" 
+                                placeholder="https://ejemplo.com/paseo-virtual"
+                                aria-required="false"
+                            >
+                            <span class="form-help">Si ya tienes un paseo virtual creado, pega el enlace aquí</span>
+                        </div>
+                    </div>
+
+                    <div class="step-actions">
+                        <button type="button" class="btn btn-secondary" onclick="prevStep()">
+                            <i class="fas fa-arrow-left" aria-hidden="true"></i> Anterior
+                        </button>
+                        <button type="submit" class="btn btn-primary btn-success">
+                            <i class="fas fa-save" aria-hidden="true"></i>
+                            Guardar Publicación
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </main>
+
+    <!-- Modal de Ayuda para Google Maps -->
+    <div class="modal" id="mapsHelpModal">
+        <div class="modal-content modal-sm">
+            <div class="modal-header">
+                <h3 class="modal-title">¿Cómo obtener el enlace de Google Maps?</h3>
+                <button class="modal-close" onclick="closeMapsHelp()" aria-label="Cerrar">
+                    <i class="fas fa-times" aria-hidden="true"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <ol class="help-steps">
+                    <li>Abre <strong>Google Maps</strong> en tu navegador o aplicación móvil</li>
+                    <li>Busca la dirección de la propiedad</li>
+                    <li>Haz clic en el botón <strong>"Compartir"</strong></li>
+                    <li>Selecciona <strong>"Copiar enlace"</strong></li>
+                    <li>Pega el enlace en el campo correspondiente</li>
+                </ol>
+                <div class="help-note">
+                    <i class="fas fa-lightbulb" aria-hidden="true"></i>
+                    <p>El enlace debe verse así: <code>https://maps.google.com/?q=...</code></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript -->
+    <script src="/static/js/publicacion.js"></script>
+</body>
+</html>
+

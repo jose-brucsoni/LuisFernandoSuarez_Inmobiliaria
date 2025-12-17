@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes, viewport-fit=cover">
+    <meta name="description" content="Panel de administración - Gestión de publicaciones y rendimiento">
+    <title>Panel de Administración | Luis Fernando Suarez</title>
+    
+    <!-- iOS Safari Meta Tags -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Panel Admin">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="/static/css/panel.css">
+</head>
+<body>
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <a href="/" class="sidebar-logo">
+                <i class="fas fa-home" aria-hidden="true"></i>
+                <span>Panel Admin</span>
+            </a>
+            <button class="sidebar-toggle" id="sidebarToggle" aria-label="Cerrar menú">
+                <i class="fas fa-times" aria-hidden="true"></i>
+            </button>
+        </div>
+        
+        <nav class="sidebar-nav" role="navigation" aria-label="Navegación del panel">
+            <ul class="nav-list">
+                <li class="nav-item">
+                    <a href="#dashboard" class="nav-link active" data-section="dashboard">
+                        <i class="fas fa-chart-line" aria-hidden="true"></i>
+                        <span>Dashboard</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#publicaciones" class="nav-link" data-section="publicaciones">
+                        <i class="fas fa-building" aria-hidden="true"></i>
+                        <span>Publicaciones</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#estadisticas" class="nav-link" data-section="estadisticas">
+                        <i class="fas fa-chart-bar" aria-hidden="true"></i>
+                        <span>Estadísticas</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#configuracion" class="nav-link" data-section="configuracion">
+                        <i class="fas fa-cog" aria-hidden="true"></i>
+                        <span>Configuración</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+        
+        <div class="sidebar-footer">
+            <a href="/" class="btn-back">
+                <i class="fas fa-arrow-left" aria-hidden="true"></i>
+                <span>Volver al sitio</span>
+            </a>
+        </div>
+    </aside>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <!-- Top Bar -->
+        <header class="top-bar">
+            <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú">
+                <i class="fas fa-bars" aria-hidden="true"></i>
+            </button>
+            <div class="top-bar-content">
+                <h1 class="page-title" id="pageTitle">Dashboard</h1>
+                <div class="top-bar-actions">
+                    <button class="btn-icon" aria-label="Notificaciones">
+                        <i class="fas fa-bell" aria-hidden="true"></i>
+                        <span class="badge">3</span>
+                    </button>
+                    <div class="user-menu">
+                        <button class="user-btn" aria-label="Menú de usuario">
+                            <i class="fas fa-user-circle" aria-hidden="true"></i>
+                            <span>Admin</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Dashboard Section -->
+        <section id="dashboard" class="content-section active">
+            <div class="container-fluid">
+                <!-- Stats Cards -->
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-icon stat-icon-primary">
+                            <i class="fas fa-building" aria-hidden="true"></i>
+                        </div>
+                        <div class="stat-content">
+                            <h3 class="stat-value" id="totalPublicaciones">0</h3>
+                            <p class="stat-label">Total Publicaciones</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon stat-icon-success">
+                            <i class="fas fa-eye" aria-hidden="true"></i>
+                        </div>
+                        <div class="stat-content">
+                            <h3 class="stat-value" id="totalVisitas">0</h3>
+                            <p class="stat-label">Total Visitas</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon stat-icon-warning">
+                            <i class="fas fa-envelope" aria-hidden="true"></i>
+                        </div>
+                        <div class="stat-content">
+                            <h3 class="stat-value" id="totalContactos">0</h3>
+                            <p class="stat-label">Nuevos Contactos</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon stat-icon-info">
+                            <i class="fas fa-chart-line" aria-hidden="true"></i>
+                        </div>
+                        <div class="stat-content">
+                            <h3 class="stat-value" id="tasaConversion">0%</h3>
+                            <p class="stat-label">Tasa de Conversión</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Quick Actions -->
+                <div class="quick-actions">
+                    <h2 class="section-title">Acciones Rápidas</h2>
+                    <div class="actions-grid">
+                        <button class="action-btn" id="btnNuevaPublicacion">
+                            <i class="fas fa-plus-circle" aria-hidden="true"></i>
+                            <span>Nueva Publicación</span>
+                        </button>
+                        <button class="action-btn">
+                            <i class="fas fa-edit" aria-hidden="true"></i>
+                            <span>Editar Publicación</span>
+                        </button>
+                        <button class="action-btn">
+                            <i class="fas fa-chart-bar" aria-hidden="true"></i>
+                            <span>Ver Reportes</span>
+                        </button>
+                        <button class="action-btn">
+                            <i class="fas fa-download" aria-hidden="true"></i>
+                            <span>Exportar Datos</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Recent Activity -->
+                <div class="recent-activity">
+                    <h2 class="section-title">Actividad Reciente</h2>
+                    <div class="activity-list" id="activityList">
+                        <div class="activity-item">
+                            <div class="activity-icon">
+                                <i class="fas fa-plus" aria-hidden="true"></i>
+                            </div>
+                            <div class="activity-content">
+                                <p class="activity-text">Nueva publicación creada</p>
+                                <span class="activity-time">Hace 2 horas</span>
+                            </div>
+                        </div>
+                        <div class="activity-item">
+                            <div class="activity-icon">
+                                <i class="fas fa-eye" aria-hidden="true"></i>
+                            </div>
+                            <div class="activity-content">
+                                <p class="activity-text">10 nuevas visitas</p>
+                                <span class="activity-time">Hace 5 horas</span>
+                            </div>
+                        </div>
+                        <div class="activity-item">
+                            <div class="activity-icon">
+                                <i class="fas fa-envelope" aria-hidden="true"></i>
+                            </div>
+                            <div class="activity-content">
+                                <p class="activity-text">Nuevo mensaje de contacto</p>
+                                <span class="activity-time">Hace 1 día</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Publicaciones Section -->
+        <section id="publicaciones" class="content-section">
+            <div class="container-fluid">
+                <div class="section-header">
+                    <h2 class="section-title">Gestión de Publicaciones</h2>
+                    <button class="btn btn-primary" id="btnAgregarPublicacion">
+                        <i class="fas fa-plus" aria-hidden="true"></i>
+                        <span>Agregar Publicación</span>
+                    </button>
+                </div>
+
+                <!-- Filters -->
+                <div class="filters-bar">
+                    <div class="search-box">
+                        <i class="fas fa-search" aria-hidden="true"></i>
+                        <input type="text" id="searchInput" placeholder="Buscar publicaciones..." aria-label="Buscar publicaciones">
+                    </div>
+                    <select class="filter-select" id="filterStatus" aria-label="Filtrar por estado">
+                        <option value="all">Todos los estados</option>
+                        <option value="active">Activas</option>
+                        <option value="inactive">Inactivas</option>
+                        <option value="draft">Borradores</option>
+                    </select>
+                    <select class="filter-select" id="filterCategory" aria-label="Filtrar por categoría">
+                        <option value="all">Todas las categorías</option>
+                        <option value="venta">Venta</option>
+                        <option value="alquiler">Alquiler</option>
+                        <option value="anticretico">Anticrético</option>
+                    </select>
+                </div>
+
+                <!-- Publications Table -->
+                <div class="table-container">
+                    <table class="data-table" role="table">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Título</th>
+                                <th>Categoría</th>
+                                <th>Estado</th>
+                                <th>Visitas</th>
+                                <th>Fecha</th>
+                                <th>Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody id="publicationsTableBody">
+                            <!-- Las publicaciones se cargarán dinámicamente -->
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- Pagination -->
+                <div class="pagination" id="pagination">
+                    <button class="pagination-btn" id="prevPage" disabled>
+                        <i class="fas fa-chevron-left" aria-hidden="true"></i>
+                        <span>Anterior</span>
+                    </button>
+                    <div class="pagination-info">
+                        <span id="pageInfo">Página 1 de 1</span>
+                    </div>
+                    <button class="pagination-btn" id="nextPage" disabled>
+                        <span>Siguiente</span>
+                        <i class="fas fa-chevron-right" aria-hidden="true"></i>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Estadísticas Section -->
+        <section id="estadisticas" class="content-section">
+            <div class="container-fluid">
+                <h2 class="section-title">Estadísticas y Rendimiento</h2>
+                
+                <!-- Charts Container -->
+                <div class="charts-grid">
+                    <div class="chart-card">
+                        <h3 class="chart-title">Visitas por Día</h3>
+                        <div class="chart-placeholder" id="visitsChart">
+                            <p class="chart-placeholder-text">Gráfico de visitas se cargará aquí</p>
+                        </div>
+                    </div>
+                    <div class="chart-card">
+                        <h3 class="chart-title">Publicaciones por Categoría</h3>
+                        <div class="chart-placeholder" id="categoryChart">
+                            <p class="chart-placeholder-text">Gráfico de categorías se cargará aquí</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Performance Metrics -->
+                <div class="metrics-grid">
+                    <div class="metric-card">
+                        <h3 class="metric-title">Tiempo de Carga</h3>
+                        <div class="metric-value">1.2s</div>
+                        <div class="metric-trend trend-up">
+                            <i class="fas fa-arrow-up" aria-hidden="true"></i>
+                            <span>Mejoró 15%</span>
+                        </div>
+                    </div>
+                    <div class="metric-card">
+                        <h3 class="metric-title">Tasa de Rebote</h3>
+                        <div class="metric-value">32%</div>
+                        <div class="metric-trend trend-down">
+                            <i class="fas fa-arrow-down" aria-hidden="true"></i>
+                            <span>Mejoró 8%</span>
+                        </div>
+                    </div>
+                    <div class="metric-card">
+                        <h3 class="metric-title">Páginas por Sesión</h3>
+                        <div class="metric-value">3.4</div>
+                        <div class="metric-trend trend-up">
+                            <i class="fas fa-arrow-up" aria-hidden="true"></i>
+                            <span>Mejoró 12%</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Configuración Section -->
+        <section id="configuracion" class="content-section">
+            <div class="container-fluid">
+                <h2 class="section-title">Configuración</h2>
+                
+                <div class="settings-grid">
+                    <div class="settings-card">
+                        <h3 class="settings-card-title">
+                            <i class="fas fa-cog" aria-hidden="true"></i>
+                            Configuración General
+                        </h3>
+                        <form class="settings-form" id="generalSettingsForm">
+                            <div class="form-group">
+                                <label for="siteName">Nombre del Sitio</label>
+                                <input type="text" id="siteName" value="Luis Fernando Suarez" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label for="siteEmail">Email de Contacto</label>
+                                <input type="email" id="siteEmail" value="contacto@luisfernandosuarez.com" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label for="sitePhone">Teléfono</label>
+                                <input type="tel" id="sitePhone" value="+1 (555) 123-4567" class="form-control">
+                            </div>
+                            <button type="submit" class="btn btn-primary">Guardar Cambios</button>
+                        </form>
+                    </div>
+
+                    <div class="settings-card">
+                        <h3 class="settings-card-title">
+                            <i class="fas fa-bell" aria-hidden="true"></i>
+                            Notificaciones
+                        </h3>
+                        <form class="settings-form" id="notificationsForm">
+                            <div class="form-group checkbox-group">
+                                <label class="checkbox-label">
+                                    <input type="checkbox" checked>
+                                    <span>Recibir notificaciones por email</span>
+                                </label>
+                            </div>
+                            <div class="form-group checkbox-group">
+                                <label class="checkbox-label">
+                                    <input type="checkbox" checked>
+                                    <span>Notificar nuevos contactos</span>
+                                </label>
+                            </div>
+                            <div class="form-group checkbox-group">
+                                <label class="checkbox-label">
+                                    <input type="checkbox">
+                                    <span>Notificar nuevas visitas</span>
+                                </label>
+                            </div>
+                            <button type="submit" class="btn btn-primary">Guardar Cambios</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Modal para Nueva/Editar Publicación -->
+    <div class="modal" id="publicationModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title" id="modalTitle">Nueva Publicación</h2>
+                <button class="modal-close" id="modalClose" aria-label="Cerrar modal">
+                    <i class="fas fa-times" aria-hidden="true"></i>
+                </button>
+            </div>
+            <form class="modal-form" id="publicationForm">
+                <div class="form-group">
+                    <label for="pubTitle">Título *</label>
+                    <input type="text" id="pubTitle" required class="form-control" placeholder="Ej: Casa Moderna en Zona Norte">
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="pubCategory">Categoría *</label>
+                        <select id="pubCategory" required class="form-control">
+                            <option value="">Seleccionar...</option>
+                            <option value="venta">Venta</option>
+                            <option value="alquiler">Alquiler</option>
+                            <option value="anticretico">Anticrético</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="pubStatus">Estado *</label>
+                        <select id="pubStatus" required class="form-control">
+                            <option value="draft">Borrador</option>
+                            <option value="active">Activa</option>
+                            <option value="inactive">Inactiva</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="pubLocation">Ubicación *</label>
+                    <input type="text" id="pubLocation" required class="form-control" placeholder="Ej: Zona Norte">
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="pubPrice">Precio *</label>
+                        <input type="number" id="pubPrice" required class="form-control" placeholder="250000">
+                    </div>
+                    <div class="form-group">
+                        <label for="pubArea">Área (m²)</label>
+                        <input type="number" id="pubArea" class="form-control" placeholder="180">
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="pubBedrooms">Habitaciones</label>
+                        <input type="number" id="pubBedrooms" class="form-control" placeholder="3" min="0">
+                    </div>
+                    <div class="form-group">
+                        <label for="pubBathrooms">Baños</label>
+                        <input type="number" id="pubBathrooms" class="form-control" placeholder="2" min="0">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="pubDescription">Descripción</label>
+                    <textarea id="pubDescription" class="form-control" rows="5" placeholder="Descripción detallada de la propiedad..."></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="pubImage">URL de Imagen</label>
+                    <input type="url" id="pubImage" class="form-control" placeholder="https://ejemplo.com/imagen.jpg">
+                </div>
+                <div class="modal-actions">
+                    <button type="button" class="btn btn-secondary" id="modalCancel">Cancelar</button>
+                    <button type="submit" class="btn btn-primary">Guardar Publicación</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- JavaScript -->
+    <script src="/static/js/panel.js"></script>
+</body>
+</html>
+
