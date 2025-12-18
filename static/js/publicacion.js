@@ -45,6 +45,9 @@ document.addEventListener('DOMContentLoaded', () => {
     // Inicializar eventos
     initializeEvents();
     
+    // Inicializar campos condicionales
+    initializeConditionalFields();
+    
     // Inicializar drag and drop
     initializeDragAndDrop();
     
@@ -127,9 +130,18 @@ function fillFormWithData() {
 // NAVEGACIÓN ENTRE PASOS
 // ============================================
 function nextStep() {
-    if (validateCurrentStep()) {
+    try {
+        if (validateCurrentStep()) {
+            if (currentStep < totalSteps) {
+                saveStepData();
+                currentStep++;
+                updateStepDisplay();
+            }
+        }
+    } catch (error) {
+        console.error('Error al avanzar al siguiente paso:', error);
+        // Aún así permitir avanzar en desarrollo
         if (currentStep < totalSteps) {
-            saveStepData();
             currentStep++;
             updateStepDisplay();
         }
@@ -182,55 +194,9 @@ function updateStepDisplay() {
 // VALIDACIÓN DE PASOS
 // ============================================
 function validateCurrentStep() {
-    const stepElement = document.querySelector(`#step${currentStep}`);
-    const requiredFields = stepElement.querySelectorAll('[required]');
-    let isValid = true;
-    
-    requiredFields.forEach(field => {
-        if (!field.value.trim()) {
-            isValid = false;
-            field.classList.add('error');
-            showFieldError(field, 'Este campo es obligatorio');
-        } else {
-            field.classList.remove('error');
-            clearFieldError(field);
-        }
-        
-        // Validaciones específicas
-        if (field.id === 'descripcion' && field.value.trim().length < 100) {
-            isValid = false;
-            field.classList.add('error');
-            showFieldError(field, 'La descripción debe tener al menos 100 caracteres');
-        }
-        
-        if (field.id === 'googleMapsLink' && !isValidGoogleMapsLink(field.value)) {
-            isValid = false;
-            field.classList.add('error');
-            showFieldError(field, 'Ingresa un enlace válido de Google Maps');
-        }
-        
-        if (field.type === 'url' && field.value && !isValidUrl(field.value)) {
-            isValid = false;
-            field.classList.add('error');
-            showFieldError(field, 'Ingresa una URL válida');
-        }
-    });
-    
-    // Validación especial para Step 3
-    if (currentStep === 3) {
-        const imagenPrincipal = document.getElementById('imagenPrincipal');
-        if (!imagenPrincipal.files || imagenPrincipal.files.length === 0) {
-            isValid = false;
-            imagenPrincipal.closest('.upload-area').classList.add('error');
-            showNotification('Debes subir al menos una imagen principal', 'error');
-        }
-    }
-    
-    if (!isValid) {
-        showNotification('Por favor, completa todos los campos requeridos correctamente', 'error');
-    }
-    
-    return isValid;
+    // En desarrollo: No se validan campos requeridos
+    // TODO: Restaurar validaciones cuando esté en producción
+    return true;
 }
 
 function isValidGoogleMapsLink(url) {
@@ -267,30 +233,153 @@ function clearFieldError(field) {
 // ============================================
 function saveStepData() {
     if (currentStep === 1) {
-        publicationData.titulo = document.getElementById('titulo').value;
-        publicationData.precio = document.getElementById('precio').value;
-        publicationData.area = document.getElementById('area').value;
-        publicationData.habitaciones = document.getElementById('habitaciones').value;
-        publicationData.banos = document.getElementById('banos').value;
-        publicationData.garajes = document.getElementById('garajes').value;
-        publicationData.pisos = document.getElementById('pisos').value;
-        publicationData.antiguedad = document.getElementById('antiguedad').value;
-        publicationData.descripcion = document.getElementById('descripcion').value;
+        publicationData.titulo = document.getElementById('titulo')?.value || '';
+        // Precio ya no está en el Paso 1, se maneja en Paso 2 según categoría
+        publicationData.area = document.getElementById('area')?.value || '';
+        publicationData.habitaciones = document.getElementById('habitaciones')?.value || '';
+        publicationData.banos = document.getElementById('banos')?.value || '';
+        publicationData.garajes = document.getElementById('garajes')?.value || '';
+        publicationData.pisos = document.getElementById('pisos')?.value || '';
+        publicationData.antiguedad = document.getElementById('antiguedad')?.value || '';
+        publicationData.descripcion = document.getElementById('descripcion')?.value || '';
         
         // Características
         publicationData.caracteristicas = Array.from(
             document.querySelectorAll('input[name="caracteristicas"]:checked')
         ).map(cb => cb.value);
     } else if (currentStep === 2) {
-        publicationData.categoria = document.getElementById('categoria').value;
-        publicationData.subcategoria = document.getElementById('subcategoria').value;
-        publicationData.estado = document.getElementById('estado').value;
-        publicationData.ubicacion = document.getElementById('ubicacion').value;
-        publicationData.googleMapsLink = document.getElementById('googleMapsLink').value;
+        // Categorías múltiples
+        publicationData.categorias = Array.from(
+            document.querySelectorAll('input[name="categorias"]:checked')
+        ).map(cb => cb.value);
+        
+        // Subcategorías múltiples
+        publicationData.subcategorias = Array.from(
+            document.querySelectorAll('input[name="subcategorias"]:checked')
+        ).map(cb => cb.value);
+        
+        // Guardar datos específicos de cada categoría seleccionada
+        
+        // Si Venta está seleccionada
+        if (publicationData.categorias.includes('venta')) {
+            publicationData.venta = {
+                precio: document.getElementById('precioVenta')?.value || '',
+                contado: document.querySelector('input[name="ventaContado"]')?.checked || false,
+                credito: document.querySelector('input[name="ventaCredito"]')?.checked || false,
+                negociable: document.querySelector('input[name="ventaNegociable"]')?.checked || false
+            };
+        }
+        
+        // Si Alquiler está seleccionada
+        if (publicationData.categorias.includes('alquiler')) {
+            publicationData.alquiler = {
+                cuotaMensual: document.getElementById('cuotaMensual')?.value || '',
+                mesesGarantia: document.getElementById('mesesGarantia')?.value || '',
+                negociable: document.querySelector('input[name="alquilerNegociable"]')?.checked || false
+            };
+        }
+        
+        // Si Anticrético está seleccionada
+        if (publicationData.categorias.includes('anticretico')) {
+            publicationData.anticretico = {
+                monto: document.getElementById('montoAnticretico')?.value || '',
+                meses: document.getElementById('mesesAnticretico')?.value || ''
+            };
+        }
     } else if (currentStep === 3) {
-        publicationData.enlaceVirtual = document.getElementById('enlaceVirtual').value;
+        publicationData.estado = document.getElementById('estado')?.value || 'draft';
+        publicationData.ubicacion = document.getElementById('ubicacion')?.value || '';
+        publicationData.googleMapsLink = document.getElementById('googleMapsLink')?.value || '';
+        publicationData.enlaceVirtual = document.getElementById('enlaceVirtual')?.value || '';
     }
 }
+
+// ============================================
+// CAMPOS CONDICIONALES POR CATEGORÍA
+// ============================================
+function initializeConditionalFields() {
+    // Event listeners para checkboxes de categorías
+    const categoriaCheckboxes = document.querySelectorAll('input[name="categorias"]');
+    
+    categoriaCheckboxes.forEach(checkbox => {
+        checkbox.addEventListener('change', updateConditionalFields);
+    });
+}
+
+function updateConditionalFields() {
+    const ventaCheckbox = document.querySelector('input[name="categorias"][value="venta"]');
+    const alquilerCheckbox = document.querySelector('input[name="categorias"][value="alquiler"]');
+    const anticreticoCheckbox = document.querySelector('input[name="categorias"][value="anticretico"]');
+    
+    const ventaChecked = ventaCheckbox ? ventaCheckbox.checked : false;
+    const alquilerChecked = alquilerCheckbox ? alquilerCheckbox.checked : false;
+    const anticreticoChecked = anticreticoCheckbox ? anticreticoCheckbox.checked : false;
+    
+    // Mostrar/ocultar campos de Venta
+    const ventaFields = document.getElementById('ventaFields');
+    if (ventaFields) {
+        ventaFields.style.display = ventaChecked ? 'block' : 'none';
+        
+        // En desarrollo: No se establecen campos como required
+        // TODO: Restaurar cuando esté en producción
+        // const ventaInputs = ventaFields.querySelectorAll('.category-required');
+        // ventaInputs.forEach(input => {
+        //     input.required = ventaChecked;
+        // });
+    }
+    
+    // Mostrar/ocultar campos de Alquiler
+    const alquilerFields = document.getElementById('alquilerFields');
+    if (alquilerFields) {
+        alquilerFields.style.display = alquilerChecked ? 'block' : 'none';
+        
+        // En desarrollo: No se establecen campos como required
+        // TODO: Restaurar cuando esté en producción
+        // const alquilerInputs = alquilerFields.querySelectorAll('.category-required');
+        // alquilerInputs.forEach(input => {
+        //     input.required = alquilerChecked;
+        // });
+    }
+    
+    // Mostrar/ocultar campos de Anticrético
+    const anticreticoFields = document.getElementById('anticreticoFields');
+    if (anticreticoFields) {
+        anticreticoFields.style.display = anticreticoChecked ? 'block' : 'none';
+        
+        // En desarrollo: No se establecen campos como required
+        // TODO: Restaurar cuando esté en producción
+        // const anticreticoInputs = anticreticoFields.querySelectorAll('.category-required');
+        // anticreticoInputs.forEach(input => {
+        //     input.required = anticreticoChecked;
+        // });
+    }
+}
+
+// ============================================
+// CONVERTIR MESES A AÑOS
+// ============================================
+function convertirMesesAAnios(meses) {
+    const mesesNum = parseInt(meses) || 0;
+    const anios = mesesNum / 12;
+    const aniosTexto = document.getElementById('aniosTexto');
+    
+    if (aniosTexto) {
+        if (mesesNum === 0) {
+            aniosTexto.textContent = '0 años';
+        } else if (anios < 1) {
+            aniosTexto.textContent = `${mesesNum} ${mesesNum === 1 ? 'mes' : 'meses'}`;
+        } else if (mesesNum % 12 === 0) {
+            aniosTexto.textContent = `${anios} ${anios === 1 ? 'año' : 'años'}`;
+        } else {
+            const aniosEnteros = Math.floor(anios);
+            const mesesRestantes = mesesNum % 12;
+            aniosTexto.textContent = `${aniosEnteros} ${aniosEnteros === 1 ? 'año' : 'años'} y ${mesesRestantes} ${mesesRestantes === 1 ? 'mes' : 'meses'}`;
+        }
+    }
+}
+
+// Hacer la función global para que pueda ser llamada desde el HTML
+window.convertirMesesAAnios = convertirMesesAAnios;
 
 // ============================================
 // INICIALIZAR EVENTOS

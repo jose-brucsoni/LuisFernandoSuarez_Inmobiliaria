@@ -464,6 +464,215 @@ select.form-control {
     color: var(--scarlet-rush);
 }
 
+/* Featured Checkboxes (Categorías) */
+.checkbox-featured {
+    padding: 1.25rem;
+    border: 2px solid var(--border-color);
+    background: white;
+    transition: all 0.3s ease;
+}
+
+.checkbox-featured:hover {
+    border-color: var(--scarlet-rush);
+    background: rgba(216, 72, 70, 0.03);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+}
+
+.checkbox-featured input[type="checkbox"]:checked ~ .checkbox-content {
+    color: var(--primary-color);
+}
+
+.checkbox-featured input[type="checkbox"]:checked ~ .checkbox-content i {
+    transform: scale(1.1);
+}
+
+.checkbox-content {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    flex: 1;
+}
+
+.checkbox-content strong {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+.checkbox-content small {
+    font-size: 0.8125rem;
+    color: var(--text-secondary);
+}
+
+.checkbox-content i {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+    transition: transform 0.3s ease;
+}
+
+.categoria-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+}
+
+/* Form Sections */
+.form-section {
+    margin-bottom: 2.5rem;
+    padding-bottom: 2rem;
+    border-bottom: 2px solid var(--border-color);
+}
+
+.form-section:last-of-type {
+    border-bottom: none;
+}
+
+.form-section-title {
+    font-size: 1.125rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.form-section-title i {
+    color: var(--scarlet-rush);
+    font-size: 1.25rem;
+}
+
+/* Info Box */
+.info-box {
+    display: flex;
+    gap: 1rem;
+    padding: 1rem;
+    background: linear-gradient(135deg, rgba(216, 72, 70, 0.05), rgba(159, 86, 76, 0.05));
+    border-left: 4px solid var(--scarlet-rush);
+    border-radius: 8px;
+    margin-top: 1.5rem;
+}
+
+.info-box i {
+    color: var(--scarlet-rush);
+    font-size: 1.25rem;
+    flex-shrink: 0;
+}
+
+.info-box div {
+    flex: 1;
+}
+
+.info-box strong {
+    color: var(--text-primary);
+    font-weight: 600;
+}
+
+/* Form Error */
+.form-error {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-top: 0.5rem;
+    padding: 0.75rem;
+    background: rgba(220, 53, 69, 0.1);
+    border-left: 3px solid var(--danger-color);
+    border-radius: 4px;
+    color: var(--danger-color);
+    font-size: 0.875rem;
+    font-weight: 500;
+}
+
+.form-error i {
+    font-size: 1rem;
+}
+
+/* ============================================
+   CONDITIONAL FIELDS (MOBILE FIRST)
+   ============================================ */
+.conditional-fields {
+    margin-top: 2rem;
+}
+
+.category-fields {
+    animation: fadeInDown 0.4s ease;
+}
+
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.form-section-divider {
+    margin: 2rem 0 1.5rem;
+}
+
+.form-section-divider .form-section-title {
+    background: linear-gradient(135deg, rgba(216, 72, 70, 0.05), rgba(159, 86, 76, 0.05));
+    padding: 1rem 1.25rem;
+    border-radius: 8px;
+    border: none;
+    border-left: 4px solid var(--scarlet-rush);
+}
+
+.checkbox-options {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.input-with-conversion {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.input-with-conversion .form-control {
+    flex: 1;
+    min-width: 200px;
+}
+
+.conversion-display {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.75rem 1rem;
+    background: linear-gradient(135deg, rgba(216, 72, 70, 0.1), rgba(159, 86, 76, 0.1));
+    border-radius: 8px;
+    font-weight: 600;
+    color: var(--scarlet-rush);
+    white-space: nowrap;
+}
+
+.conversion-display i {
+    font-size: 1rem;
+    opacity: 0.7;
+}
+
+#aniosTexto {
+    font-size: 1rem;
+}
+
+.input-suffix {
+    padding: 0.75rem 1rem;
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    border-left: none;
+    border-radius: 0 8px 8px 0;
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
 /* ============================================
    MAP PREVIEW (MOBILE FIRST)
    ============================================ */
@@ -950,6 +1159,10 @@ select.form-control {
         grid-template-columns: repeat(4, 1fr);
     }
 
+    .categoria-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
     .gallery-preview {
         grid-template-columns: repeat(4, 1fr);
     }
@@ -973,6 +1186,10 @@ select.form-control {
 
     .publication-form {
         max-width: 900px;
+    }
+
+    .categoria-grid {
+        grid-template-columns: repeat(3, 1fr);
     }
 }
 
