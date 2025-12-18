@@ -48,6 +48,9 @@ document.addEventListener('DOMContentLoaded', () => {
     // Inicializar campos condicionales
     initializeConditionalFields();
     
+    // Inicializar campo de fecha programada
+    initializeFechaProgramacion();
+    
     // Inicializar drag and drop
     initializeDragAndDrop();
     
@@ -291,6 +294,13 @@ function saveStepData() {
         publicationData.ubicacion = document.getElementById('ubicacion')?.value || '';
         publicationData.googleMapsLink = document.getElementById('googleMapsLink')?.value || '';
         publicationData.enlaceVirtual = document.getElementById('enlaceVirtual')?.value || '';
+        
+        // Guardar fecha programada si el estado es "scheduled"
+        if (publicationData.estado === 'scheduled') {
+            publicationData.fechaProgramacion = document.getElementById('fechaProgramacion')?.value || '';
+        } else {
+            publicationData.fechaProgramacion = '';
+        }
     }
 }
 
@@ -315,10 +325,19 @@ function updateConditionalFields() {
     const alquilerChecked = alquilerCheckbox ? alquilerCheckbox.checked : false;
     const anticreticoChecked = anticreticoCheckbox ? anticreticoCheckbox.checked : false;
     
+    // Variable para almacenar el campo que se mostró (para hacer scroll)
+    let fieldToScroll = null;
+    
     // Mostrar/ocultar campos de Venta
     const ventaFields = document.getElementById('ventaFields');
     if (ventaFields) {
+        const wasHidden = ventaFields.style.display === 'none' || ventaFields.style.display === '';
         ventaFields.style.display = ventaChecked ? 'block' : 'none';
+        
+        // Si se acaba de mostrar (estaba oculto y ahora está visible), hacer scroll
+        if (ventaChecked && wasHidden) {
+            fieldToScroll = ventaFields;
+        }
         
         // En desarrollo: No se establecen campos como required
         // TODO: Restaurar cuando esté en producción
@@ -331,7 +350,13 @@ function updateConditionalFields() {
     // Mostrar/ocultar campos de Alquiler
     const alquilerFields = document.getElementById('alquilerFields');
     if (alquilerFields) {
+        const wasHidden = alquilerFields.style.display === 'none' || alquilerFields.style.display === '';
         alquilerFields.style.display = alquilerChecked ? 'block' : 'none';
+        
+        // Si se acaba de mostrar (estaba oculto y ahora está visible), hacer scroll
+        if (alquilerChecked && wasHidden) {
+            fieldToScroll = alquilerFields;
+        }
         
         // En desarrollo: No se establecen campos como required
         // TODO: Restaurar cuando esté en producción
@@ -344,7 +369,13 @@ function updateConditionalFields() {
     // Mostrar/ocultar campos de Anticrético
     const anticreticoFields = document.getElementById('anticreticoFields');
     if (anticreticoFields) {
+        const wasHidden = anticreticoFields.style.display === 'none' || anticreticoFields.style.display === '';
         anticreticoFields.style.display = anticreticoChecked ? 'block' : 'none';
+        
+        // Si se acaba de mostrar (estaba oculto y ahora está visible), hacer scroll
+        if (anticreticoChecked && wasHidden) {
+            fieldToScroll = anticreticoFields;
+        }
         
         // En desarrollo: No se establecen campos como required
         // TODO: Restaurar cuando esté en producción
@@ -352,6 +383,28 @@ function updateConditionalFields() {
         // anticreticoInputs.forEach(input => {
         //     input.required = anticreticoChecked;
         // });
+    }
+    
+    // Hacer scroll suave hasta el campo que se acaba de mostrar
+    if (fieldToScroll) {
+        // Usar setTimeout para asegurar que el DOM se haya actualizado
+        setTimeout(() => {
+            fieldToScroll.scrollIntoView({ 
+                behavior: 'smooth', 
+                block: 'start',
+                inline: 'nearest'
+            });
+            
+            // Ajuste adicional para compensar el header fijo si existe
+            const headerOffset = 100; // Ajustar según el tamaño del header
+            const elementPosition = fieldToScroll.getBoundingClientRect().top;
+            const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+            
+            window.scrollTo({
+                top: offsetPosition,
+                behavior: 'smooth'
+            });
+        }, 100);
     }
 }
 
@@ -380,6 +433,79 @@ function convertirMesesAAnios(meses) {
 
 // Hacer la función global para que pueda ser llamada desde el HTML
 window.convertirMesesAAnios = convertirMesesAAnios;
+
+// ============================================
+// GESTIÓN DE FECHA PROGRAMADA
+// ============================================
+function initializeFechaProgramacion() {
+    // Establecer la fecha mínima como la fecha/hora actual
+    const fechaProgramacionInput = document.getElementById('fechaProgramacion');
+    if (fechaProgramacionInput) {
+        // Obtener la fecha actual en formato YYYY-MM-DDTHH:mm
+        const now = new Date();
+        // Ajustar al siguiente minuto para evitar seleccionar el pasado
+        now.setMinutes(now.getMinutes() + 1);
+        const year = now.getFullYear();
+        const month = String(now.getMonth() + 1).padStart(2, '0');
+        const day = String(now.getDate()).padStart(2, '0');
+        const hours = String(now.getHours()).padStart(2, '0');
+        const minutes = String(now.getMinutes()).padStart(2, '0');
+        const minDateTime = `${year}-${month}-${day}T${hours}:${minutes}`;
+        
+        fechaProgramacionInput.setAttribute('min', minDateTime);
+        
+        // Verificar el estado inicial y mostrar/ocultar el campo
+        handleEstadoChange();
+    }
+}
+
+function handleEstadoChange() {
+    const estadoSelect = document.getElementById('estado');
+    const fechaProgramacionGroup = document.getElementById('fechaProgramacionGroup');
+    const fechaProgramacionInput = document.getElementById('fechaProgramacion');
+    
+    if (!estadoSelect || !fechaProgramacionGroup) return;
+    
+    const estadoValue = estadoSelect.value;
+    
+    // Mostrar campo de fecha solo si se selecciona "Programar Publicación"
+    if (estadoValue === 'scheduled') {
+        fechaProgramacionGroup.style.display = 'block';
+        
+        // Hacer scroll suave hasta el campo de fecha
+        setTimeout(() => {
+            fechaProgramacionGroup.scrollIntoView({ 
+                behavior: 'smooth', 
+                block: 'start',
+                inline: 'nearest'
+            });
+            
+            // Ajuste adicional para compensar el header fijo si existe
+            const headerOffset = 100;
+            const elementPosition = fechaProgramacionGroup.getBoundingClientRect().top;
+            const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+            
+            window.scrollTo({
+                top: offsetPosition,
+                behavior: 'smooth'
+            });
+            
+            // Enfocar el campo de fecha
+            if (fechaProgramacionInput) {
+                fechaProgramacionInput.focus();
+            }
+        }, 100);
+    } else {
+        fechaProgramacionGroup.style.display = 'none';
+        // Limpiar el valor si se cambia a otro estado
+        if (fechaProgramacionInput) {
+            fechaProgramacionInput.value = '';
+        }
+    }
+}
+
+// Hacer la función global para que pueda ser llamada desde el HTML
+window.handleEstadoChange = handleEstadoChange;
 
 // ============================================
 // INICIALIZAR EVENTOS
