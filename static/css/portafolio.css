@@ -15,7 +15,6 @@
     background: linear-gradient(135deg, #9F564C 0%, #D84846 50%, #86817B 100%);
     overflow: hidden;
     padding: 6rem 1rem 3rem;
-    margin-top: 60px;
 }
 
 .page-hero::before {

@@ -1,10 +1,15 @@
 // ============================================
 // NAVIGATION
 // ============================================
+// Nota: El hamburger menu ahora se maneja en navbar.js
+// Este código se mantiene como fallback si navbar.js no se carga
 const hamburger = document.getElementById('hamburger');
 const navMenu = document.getElementById('navMenu');
 
-if (hamburger && navMenu) {
+// Solo inicializar si navbar.js no lo ha hecho ya
+if (hamburger && navMenu && !hamburger.hasAttribute('data-navbar-initialized')) {
+    hamburger.setAttribute('data-navbar-initialized', 'true');
+    
     hamburger.addEventListener('click', () => {
         const isActive = navMenu.classList.contains('active');
         navMenu.classList.toggle('active');

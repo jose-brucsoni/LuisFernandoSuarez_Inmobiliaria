@@ -41,29 +41,8 @@
 </head>
 <body>
     <!-- Navigation -->
-    <nav class="navbar" role="navigation" aria-label="Navegación principal">
-        <div class="container">
-            <div class="nav-wrapper">
-                <a href="#inicio" class="logo" aria-label="Ir al inicio">
-                    <i class="fas fa-home" aria-hidden="true"></i>
-                    <span>Luis Fernando Suarez Brucsoni</span>
-                </a>
-                <ul class="nav-menu" id="navMenu" role="menubar">
-                    <li role="none"><a href="#inicio" role="menuitem" aria-label="Ir a la sección de inicio">Inicio</a></li>
-                    <li role="none"><a href="/Portafolio.html" role="menuitem" aria-label="Ver portafolio completo">Portafolio</a></li>
-                    <li role="none"><a href="#propiedades" role="menuitem" aria-label="Ver propiedades destacadas">Destacadas</a></li>
-                    <li role="none"><a href="#servicios" role="menuitem" aria-label="Conocer nuestros servicios">Servicios</a></li>
-                    <li role="none"><a href="#sobre-mi" role="menuitem" aria-label="Conocer más sobre mí">Sobre Mí</a></li>
-                    <li role="none"><a href="#contacto" role="menuitem" aria-label="Ponerse en contacto" class="nav-cta">Contacto</a></li>
-                </ul>
-                <button class="hamburger" id="hamburger" aria-label="Abrir menú de navegación" aria-expanded="false" aria-controls="navMenu">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </button>
-            </div>
-        </div>
-    </nav>
+    <!-- El navbar se carga dinámicamente desde /templates/components/navbar.html -->
+    <div id="navbar-placeholder"></div>
     <!-- Hero Section -->
     <section id="inicio" class="hero">
         <div class="hero-overlay"></div>
@@ -551,6 +530,7 @@
     </button>
 
     <!-- JavaScript -->
+    <script src="/static/js/navbar.js"></script>
     <script src="/static/js/main.js"></script>
 </body>
 </html>
