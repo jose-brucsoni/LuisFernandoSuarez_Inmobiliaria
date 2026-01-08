@@ -26,7 +26,7 @@
     <!-- Sidebar Navigation -->
     <aside class="sidebar" id="sidebar">
         <div class="sidebar-header">
-            <a href="/index.html" class="sidebar-logo">
+            <a href="/templates/index.html" class="sidebar-logo">
                 <i class="fas fa-home" aria-hidden="true"></i>
                 <span>Panel Admin</span>
             </a>
@@ -65,7 +65,7 @@
         </nav>
         
         <div class="sidebar-footer">
-            <a href="/index.html" class="btn-back">
+            <a href="/templates/index.html" class="btn-back">
                 <i class="fas fa-arrow-left" aria-hidden="true"></i>
                 <span>Volver al sitio</span>
             </a>
@@ -143,19 +143,19 @@
                 <div class="quick-actions">
                     <h2 class="section-title">Acciones Rápidas</h2>
                     <div class="actions-grid">
-                        <a href="/Publicacion.html" class="action-btn" id="btnNuevaPublicacion">
+                        <a href="/templates/Publicacion.html" class="action-btn" id="btnNuevaPublicacion">
                             <i class="fas fa-plus-circle" aria-hidden="true"></i>
                             <span>Nueva Publicación</span>
                         </a>
-                        <button class="action-btn">
+                        <a href="#publicaciones" class="action-btn" aria-label="Ir a publicaciones para editar">
                             <i class="fas fa-edit" aria-hidden="true"></i>
                             <span>Editar Publicación</span>
-                        </button>
-                        <button class="action-btn">
+                        </a>
+                        <a href="#estadisticas" class="action-btn" aria-label="Ver reportes y estadísticas">
                             <i class="fas fa-chart-bar" aria-hidden="true"></i>
                             <span>Ver Reportes</span>
-                        </button>
-                        <button class="action-btn">
+                        </a>
+                        <button class="action-btn" onclick="exportarDatos()" aria-label="Exportar datos">
                             <i class="fas fa-download" aria-hidden="true"></i>
                             <span>Exportar Datos</span>
                         </button>
@@ -203,7 +203,7 @@
             <div class="container-fluid">
                 <div class="section-header">
                     <h2 class="section-title">Gestión de Publicaciones</h2>
-                    <a href="/Publicacion.html" class="btn btn-primary" id="btnAgregarPublicacion">
+                    <a href="/templates/Publicacion.html" class="btn btn-primary" id="btnAgregarPublicacion">
                         <i class="fas fa-plus" aria-hidden="true"></i>
                         <span>Agregar Publicación</span>
                     </a>
