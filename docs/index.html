@@ -2,9 +2,18 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Luis Fernando Suarez Brucsoni - Inmobiliaria especializada en paseos virtuales. Encuentra tu hogar ideal con tecnología 360°">
-    <title>Luis Fernando Suarez Brucsoni - Inmobiliaria | Paseos Virtuales</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes, viewport-fit=cover">
+    <meta name="description" content="Luis Fernando Suarez Brucsoni - Agente Inmobiliario profesional. Compra, venta y asesoría de propiedades. Encuentra tu hogar ideal con el mejor servicio">
+    <title>Luis Fernando Suarez Brucsoni - Agente Inmobiliario | Compra y Venta de Propiedades</title>
+    
+    <!-- iOS Safari Meta Tags -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Luis F. Suarez">
+    <meta name="format-detection" content="telephone=no">
+    
+    <!-- Prevent text size adjustment on iOS -->
+    <meta name="apple-touch-fullscreen" content="yes">
     
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -15,154 +24,113 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <!-- CSS -->
-    <link rel="stylesheet" href="static/css/style.css">
+    <link rel="stylesheet" href="/static/css/style.css">
+    <style>
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border-width: 0;
+        }
+    </style>
 </head>
 <body>
     <!-- Navigation -->
-    <nav class="navbar">
-        <div class="container">
-            <div class="nav-wrapper">
-                <div class="logo">
-                    <i class="fas fa-home"></i>
-                    <span>Luis Fernando Suarez Brucsoni</span>
-                </div>
-                <ul class="nav-menu" id="navMenu">
-                    <li><a href="#inicio">Inicio</a></li>
-                    <li><a href="#propiedades">Propiedades</a></li>
-                    <li><a href="#paseos-virtuales">Paseos Virtuales</a></li>
-                    <li><a href="#sobre-mi">Sobre Mí</a></li>
-                    <li><a href="#contacto">Contacto</a></li>
-                </ul>
-                <div class="hamburger" id="hamburger">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </div>
-            </div>
-        </div>
-    </nav>
-
+    <!-- El navbar se carga dinámicamente desde /templates/components/navbar.html -->
+    <div id="navbar-placeholder"></div>
     <!-- Hero Section -->
     <section id="inicio" class="hero">
         <div class="hero-overlay"></div>
         <div class="hero-content">
             <div class="container">
+                <div class="hero-wrapper">
+                    <div class="hero-text">
                 <h1 class="hero-title">
-                    Encuentra tu <span class="highlight">hogar ideal</span> con paseos virtuales 360°
-                </h1>
-                <p class="hero-subtitle">
-                    Explora propiedades desde la comodidad de tu casa. Tecnología de realidad virtual para una experiencia inmersiva única.
+                            Encuentra tu <span class="highlight">hogar ideal</span> </h1>
+                        <p class="hero-subdescription">
+                            Tu éxito es mi compromiso. Trabajemos juntos para hacer realidad tus proyectos inmobiliarios.
                 </p>
                 <div class="hero-buttons">
-                    <a href="#propiedades" class="btn btn-primary">
-                        <i class="fas fa-search"></i> Ver Propiedades
+                            <a href="#propiedades" class="btn btn-primary" aria-label="Explorar propiedades disponibles">
+                                <i class="fas fa-search" aria-hidden="true"></i> Ver Propiedades
                     </a>
-                    <a href="#paseos-virtuales" class="btn btn-secondary">
-                        <i class="fas fa-vr-cardboard"></i> Experiencia Virtual
+                            <a href="#contacto" class="btn btn-secondary" aria-label="Contactar ahora">
+                                <i class="fas fa-phone" aria-hidden="true"></i> Contactar Ahora
                     </a>
                 </div>
+                        <div class="hero-trust-badges">
+                            <div class="trust-badge">
+                                <i class="fas fa-shield-alt" aria-hidden="true"></i>
+                                <span>Transacciones Seguras</span>
             </div>
+                            <div class="trust-badge">
+                                <i class="fas fa-award" aria-hidden="true"></i>
+                                <span>10+ Años de Experiencia</span>
         </div>
-        <div class="scroll-indicator">
-            <i class="fas fa-chevron-down"></i>
+                            <div class="trust-badge">
+                                <i class="fas fa-users" aria-hidden="true"></i>
+                                <span>100+ Clientes Satisfechos</span>
         </div>
-    </section>
-
-    <!-- Features Section -->
-    <section id="paseos-virtuales" class="features">
-        <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">Paseos Virtuales 360°</h2>
-                <p class="section-subtitle">La forma más moderna de conocer tu próxima casa</p>
             </div>
-            <div class="features-grid">
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-vr-cardboard"></i>
                     </div>
-                    <h3>Experiencia Inmersiva</h3>
-                    <p>Recorre cada rincón de la propiedad como si estuvieras ahí. Visualiza espacios en tiempo real con tecnología 360°.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-clock"></i>
+                    <div class="hero-image-wrapper">
+                        <img src="/static/images/SFDP_Nano_SosteniendoLlave.png" alt="Luis Fernando Suarez Brucsoni - Agente Inmobiliario" class="hero-agent-image">
                     </div>
-                    <h3>Disponible 24/7</h3>
-                    <p>Visita propiedades cuando quieras, desde cualquier dispositivo. Sin horarios ni citas previas necesarias.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-mobile-alt"></i>
-                    </div>
-                    <h3>Desde Cualquier Dispositivo</h3>
-                    <p>Compatible con computadoras, tablets y smartphones. Navega fácilmente por todas las habitaciones.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-ruler-combined"></i>
-                    </div>
-                    <h3>Mediciones Precisas</h3>
-                    <p>Obtén información detallada de cada espacio, incluyendo medidas y características específicas.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-share-alt"></i>
-                    </div>
-                    <h3>Comparte Fácilmente</h3>
-                    <p>Comparte los paseos virtuales con familiares y amigos para tomar decisiones juntos.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-save"></i>
-                    </div>
-                    <h3>Guarda tus Favoritas</h3>
-                    <p>Marca y guarda tus propiedades favoritas para compararlas y revisarlas cuando quieras.</p>
                 </div>
             </div>
         </div>
+        <a href="#servicios" class="scroll-indicator" aria-label="Desplazarse a la siguiente sección">
+            <i class="fas fa-chevron-down" aria-hidden="true"></i>
+        </a>
     </section>
 
     <!-- Properties Section -->
     <section id="propiedades" class="properties">
         <div class="container">
             <div class="section-header">
+                <span class="section-label">Portafolio exclusivo</span>
                 <h2 class="section-title">Propiedades Destacadas</h2>
-                <p class="section-subtitle">Explora nuestras mejores opciones con paseo virtual incluido</p>
+                <p class="section-subtitle">Explora nuestras mejores opciones disponibles para compra o venta</p>
             </div>
             <div class="properties-grid">
-                <div class="property-card">
+                <a href="/templates/Inmueble.html?id=1" class="property-card" style="text-decoration: none; color: inherit;">
                     <div class="property-image">
-                        <div class="virtual-badge">
-                            <i class="fas fa-vr-cardboard"></i> Paseo Virtual
+                        <div class="virtual-badge" aria-label="Paseo virtual disponible">
+                            <i class="fas fa-vr-cardboard" aria-hidden="true"></i> Paseo Virtual Disponible
                         </div>
                         <div class="property-overlay">
-                            <a href="#" class="btn-view">
-                                <i class="fas fa-eye"></i> Ver Paseo Virtual
-                            </a>
+                            <span class="btn-view">
+                                <i class="fas fa-info-circle" aria-hidden="true"></i> Ver Detalles
+                            </span>
                         </div>
                     </div>
                     <div class="property-info">
                         <h3>Casa Moderna en Zona Residencial</h3>
                         <p class="property-location">
-                            <i class="fas fa-map-marker-alt"></i> Zona Norte
+                            <i class="fas fa-map-marker-alt" aria-hidden="true"></i> Zona Norte
                         </p>
                         <div class="property-details">
-                            <span><i class="fas fa-bed"></i> 3 Habitaciones</span>
-                            <span><i class="fas fa-bath"></i> 2 Baños</span>
-                            <span><i class="fas fa-ruler-combined"></i> 180 m²</span>
+                            <span><i class="fas fa-bed" aria-hidden="true"></i> 3 Habitaciones</span>
+                            <span><i class="fas fa-bath" aria-hidden="true"></i> 2 Baños</span>
+                            <span><i class="fas fa-ruler-combined" aria-hidden="true"></i> 180 m²</span>
                         </div>
                         <div class="property-price">$250,000</div>
                     </div>
-                </div>
-                <div class="property-card">
+                </a>
+                <a href="/templates/Inmueble.html?id=2" class="property-card" style="text-decoration: none; color: inherit;">
                     <div class="property-image">
-                        <div class="virtual-badge">
-                            <i class="fas fa-vr-cardboard"></i> Paseo Virtual
+                        <div class="virtual-badge" aria-label="Paseo virtual disponible">
+                            <i class="fas fa-vr-cardboard" aria-hidden="true"></i> Paseo Virtual Disponible
                         </div>
                         <div class="property-overlay">
-                            <a href="#" class="btn-view">
-                                <i class="fas fa-eye"></i> Ver Paseo Virtual
-                            </a>
+                            <span class="btn-view">
+                                <i class="fas fa-info-circle" aria-hidden="true"></i> Ver Detalles
+                            </span>
                         </div>
                     </div>
                     <div class="property-info">
@@ -177,16 +145,16 @@
                         </div>
                         <div class="property-price">$180,000</div>
                     </div>
-                </div>
-                <div class="property-card">
+                </a>
+                <a href="/templates/Portafolio.html" class="property-card" style="text-decoration: none; color: inherit;">
                     <div class="property-image">
-                        <div class="virtual-badge">
-                            <i class="fas fa-vr-cardboard"></i> Paseo Virtual
+                        <div class="virtual-badge" aria-label="Paseo virtual disponible">
+                            <i class="fas fa-vr-cardboard" aria-hidden="true"></i> Paseo Virtual Disponible
                         </div>
                         <div class="property-overlay">
-                            <a href="#" class="btn-view">
-                                <i class="fas fa-eye"></i> Ver Paseo Virtual
-                            </a>
+                            <span class="btn-view">
+                                <i class="fas fa-th" aria-hidden="true"></i> Ver Más Propiedades
+                            </span>
                         </div>
                     </div>
                     <div class="property-info">
@@ -201,15 +169,187 @@
                         </div>
                         <div class="property-price">$420,000</div>
                     </div>
-                </div>
+                </a>
             </div>
             <div class="properties-cta">
-                <a href="#contacto" class="btn btn-primary">
-                    Ver Todas las Propiedades
+                <a href="/templates/Portafolio.html" class="btn btn-primary" aria-label="Ver todas las propiedades disponibles">
+                    <i class="fas fa-th" aria-hidden="true"></i> Ver Todas las Propiedades
                 </a>
             </div>
         </div>
     </section>
+
+    <!-- Categories Section -->
+    <section id="categorias" class="categories">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-label">Explora por tipo</span>
+                <h2 class="section-title">Categorías</h2>
+                <p class="section-subtitle">Encuentra la propiedad perfecta según tus necesidades</p>
+            </div>
+            <div class="categories-grid">
+                <div class="category-card" data-category="venta">
+                    <div class="category-icon">
+                        <i class="fas fa-handshake" aria-hidden="true"></i>
+                    </div>
+                    <h3>Venta</h3>
+                    <p>Propiedades disponibles para compra</p>
+                    <div class="category-subcategories" id="subcategories-venta">
+                        <a href="/templates/Portafolio.html?categoria=venta&subcategoria=familias" class="subcategory-btn" aria-label="Ver propiedades en venta para familias">
+                            <i class="fas fa-home" aria-hidden="true"></i> Para Familias
+                        </a>
+                        <a href="/templates/Portafolio.html?categoria=venta&subcategoria=empresas" class="subcategory-btn" aria-label="Ver propiedades en venta para empresas">
+                            <i class="fas fa-building" aria-hidden="true"></i> Para Empresas
+                        </a>
+                        <a href="/templates/Portafolio.html?categoria=venta&subcategoria=invertir" class="subcategory-btn" aria-label="Ver propiedades en venta para invertir">
+                            <i class="fas fa-chart-line" aria-hidden="true"></i> Para Invertir
+                        </a>
+                        <a href="/templates/Portafolio.html?categoria=venta" class="subcategory-btn" aria-label="Ver todas las propiedades en venta">
+                            <i class="fas fa-th" aria-hidden="true"></i> Todos
+                        </a>
+                        <a href="/templates/Portafolio.html?categoria=venta" class="subcategory-btn" aria-label="Ver otras opciones en venta">
+                            <i class="fas fa-ellipsis-h" aria-hidden="true"></i> Otros
+                        </a>
+                    </div>
+                    <button class="category-toggle" aria-label="Ver opciones de venta" aria-expanded="false">
+                        <span class="toggle-text">Ver Opciones</span>
+                        <i class="fas fa-chevron-down" aria-hidden="true"></i>
+                    </button>
+                </div>
+                <div class="category-card" data-category="alquileres">
+                    <div class="category-icon">
+                        <i class="fas fa-key" aria-hidden="true"></i>
+                    </div>
+                    <h3>Alquileres</h3>
+                    <p>Propiedades disponibles para alquiler</p>
+                    <div class="category-subcategories" id="subcategories-alquileres">
+                        <a href="/templates/Portafolio.html?categoria=alquiler&subcategoria=familias" class="subcategory-btn" aria-label="Ver propiedades en alquiler para familias">
+                            <i class="fas fa-home" aria-hidden="true"></i> Para Familias
+                        </a>
+                        <a href="/templates/Portafolio.html?categoria=alquiler&subcategoria=empresas" class="subcategory-btn" aria-label="Ver propiedades en alquiler para empresas">
+                            <i class="fas fa-building" aria-hidden="true"></i> Para Empresas
+                        </a>
+                        <a href="/templates/Portafolio.html?categoria=alquiler&subcategoria=invertir" class="subcategory-btn" aria-label="Ver propiedades en alquiler para invertir">
+                            <i class="fas fa-chart-line" aria-hidden="true"></i> Para Invertir
+                        </a>
+                        <a href="/templates/Portafolio.html?categoria=alquiler" class="subcategory-btn" aria-label="Ver todas las propiedades en alquiler">
+                            <i class="fas fa-th" aria-hidden="true"></i> Todos
+                        </a>
+                        <a href="/templates/Portafolio.html?categoria=alquiler" class="subcategory-btn" aria-label="Ver otras opciones en alquiler">
+                            <i class="fas fa-ellipsis-h" aria-hidden="true"></i> Otros
+                        </a>
+                    </div>
+                    <button class="category-toggle" aria-label="Ver opciones de alquileres" aria-expanded="false">
+                        <span class="toggle-text">Ver Opciones</span>
+                        <i class="fas fa-chevron-down" aria-hidden="true"></i>
+                    </button>
+                </div>
+                <div class="category-card" data-category="anticreticos">
+                    <div class="category-icon">
+                        <i class="fas fa-exchange-alt" aria-hidden="true"></i>
+                    </div>
+                    <h3>Anticréticos</h3>
+                    <p>Propiedades disponibles en anticrético</p>
+                    <div class="category-subcategories" id="subcategories-anticreticos">
+                        <a href="/templates/Portafolio.html?categoria=anticretico&subcategoria=familias" class="subcategory-btn" aria-label="Ver propiedades en anticrético para familias">
+                            <i class="fas fa-home" aria-hidden="true"></i> Para Familias
+                        </a>
+                        <a href="/templates/Portafolio.html?categoria=anticretico&subcategoria=empresas" class="subcategory-btn" aria-label="Ver propiedades en anticrético para empresas">
+                            <i class="fas fa-building" aria-hidden="true"></i> Para Empresas
+                        </a>
+                        <a href="/templates/Portafolio.html?categoria=anticretico&subcategoria=invertir" class="subcategory-btn" aria-label="Ver propiedades en anticrético para invertir">
+                            <i class="fas fa-chart-line" aria-hidden="true"></i> Para Invertir
+                        </a>
+                        <a href="/templates/Portafolio.html?categoria=anticretico" class="subcategory-btn" aria-label="Ver todas las propiedades en anticrético">
+                            <i class="fas fa-th" aria-hidden="true"></i> Todos
+                        </a>
+                        <a href="/templates/Portafolio.html?categoria=anticretico" class="subcategory-btn" aria-label="Ver otras opciones en anticrético">
+                            <i class="fas fa-ellipsis-h" aria-hidden="true"></i> Otros
+                        </a>
+                    </div>
+                    <button class="category-toggle" aria-label="Ver opciones de anticréticos" aria-expanded="false">
+                        <span class="toggle-text">Ver Opciones</span>
+                        <i class="fas fa-chevron-down" aria-hidden="true"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="servicios" class="features">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-label">Lo que ofrecemos</span>
+                <h2 class="section-title">Nuestros Servicios</h2>
+                <p class="section-subtitle">Soluciones completas y personalizadas para todas tus necesidades inmobiliarias</p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-home" aria-hidden="true"></i>
+                    </div>
+                    <h3>Compra de Propiedades</h3>
+                    <p>Te ayudamos a encontrar la propiedad perfecta que se ajuste a tus necesidades y presupuesto. Búsqueda personalizada y acompañamiento en todo el proceso.</p>
+                    <a href="#contacto" class="feature-link" aria-label="Solicitar información sobre compra de propiedades">
+                        Saber más <i class="fas fa-arrow-right" aria-hidden="true"></i>
+                    </a>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-handshake" aria-hidden="true"></i>
+                    </div>
+                    <h3>Venta de Propiedades</h3>
+                    <p>Maximiza el valor de tu propiedad con nuestra estrategia de marketing y negociación. Gestión completa desde la valoración hasta el cierre de la venta.</p>
+                    <a href="#contacto" class="feature-link" aria-label="Solicitar información sobre venta de propiedades">
+                        Saber más <i class="fas fa-arrow-right" aria-hidden="true"></i>
+                    </a>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-clipboard-check" aria-hidden="true"></i>
+                    </div>
+                    <h3>Asesoría Inmobiliaria</h3>
+                    <p>Asesoramiento profesional en inversiones, trámites legales, financiamiento y todo lo relacionado con el mercado inmobiliario.</p>
+                    <a href="#contacto" class="feature-link" aria-label="Solicitar asesoría inmobiliaria">
+                        Saber más <i class="fas fa-arrow-right" aria-hidden="true"></i>
+                    </a>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-calculator" aria-hidden="true"></i>
+                    </div>
+                    <h3>Tasaciones Profesionales</h3>
+                    <p>Valuación precisa de tu propiedad con análisis de mercado, ubicación y características. Informes detallados y confiables.</p>
+                    <a href="#contacto" class="feature-link" aria-label="Solicitar tasación profesional">
+                        Saber más <i class="fas fa-arrow-right" aria-hidden="true"></i>
+                    </a>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-key" aria-hidden="true"></i>
+                    </div>
+                    <h3>Gestión de Alquileres</h3>
+                    <p>Administración completa de propiedades en alquiler. Búsqueda de inquilinos, contratos y mantenimiento de la propiedad.</p>
+                    <a href="#contacto" class="feature-link" aria-label="Solicitar información sobre gestión de alquileres">
+                        Saber más <i class="fas fa-arrow-right" aria-hidden="true"></i>
+                    </a>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-vr-cardboard" aria-hidden="true"></i>
+                    </div>
+                    <h3>Paseos Virtuales 360°</h3>
+                    <p>Visita propiedades desde cualquier lugar con nuestra tecnología de paseos virtuales. Una herramienta adicional para conocer mejor las propiedades.</p>
+                    <a href="#propiedades" class="feature-link" aria-label="Ver propiedades con paseos virtuales">
+                        Explorar <i class="fas fa-arrow-right" aria-hidden="true"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+   
 
     <!-- About Section -->
     <section id="sobre-mi" class="about">
@@ -224,14 +364,16 @@
                     <h2 class="section-title">Luis Fernando Suarez Brucsoni</h2>
                     <p class="about-description">
                         Con más de 10 años de experiencia en el sector inmobiliario, me especializo en brindar 
-                        soluciones innovadoras para la compra y venta de propiedades. Mi enfoque combina 
-                        experiencia tradicional con tecnología de vanguardia, ofreciendo paseos virtuales 360° 
-                        que transforman la forma en que las personas encuentran su hogar ideal.
+                        soluciones completas para la compra y venta de propiedades. Mi enfoque se basa en 
+                        entender las necesidades únicas de cada cliente y ofrecer un servicio personalizado 
+                        que garantice resultados exitosos.
                     </p>
                     <p class="about-description">
-                        Mi compromiso es hacer que el proceso de búsqueda de propiedades sea más accesible, 
-                        eficiente y emocionante. Cada cliente es único, y cada propiedad tiene una historia. 
-                        Permíteme ayudarte a encontrar el lugar perfecto para crear tus mejores recuerdos.
+                        Mi compromiso es acompañarte en cada paso del proceso inmobiliario, desde la búsqueda 
+                        inicial hasta el cierre de la transacción. Conozco el mercado local a profundidad y 
+                        utilizo herramientas modernas, como paseos virtuales 360°, para complementar las 
+                        visitas presenciales y facilitar tu decisión. Cada cliente es único, y cada propiedad 
+                        tiene una historia. Permíteme ayudarte a encontrar el lugar perfecto para crear tus mejores recuerdos.
                     </p>
                     <div class="about-stats">
                         <div class="stat-item">
@@ -256,32 +398,33 @@
     <section id="contacto" class="contact">
         <div class="container">
             <div class="section-header">
+                <span class="section-label">Hablemos</span>
                 <h2 class="section-title">Contáctame</h2>
-                <p class="section-subtitle">¿Listo para encontrar tu hogar ideal? Estoy aquí para ayudarte</p>
+                <p class="section-subtitle">¿Listo para encontrar tu hogar ideal? Estoy aquí para ayudarte en cada paso del proceso</p>
             </div>
             <div class="contact-content">
                 <div class="contact-info">
                     <div class="contact-item">
                         <div class="contact-icon">
-                            <i class="fas fa-phone"></i>
+                            <i class="fas fa-phone" aria-hidden="true"></i>
                         </div>
                         <div class="contact-details">
                             <h3>Teléfono</h3>
-                            <p>+1 (555) 123-4567</p>
+                            <a href="tel:+15551234567" aria-label="Llamar al teléfono">+1 (555) 123-4567</a>
                         </div>
                     </div>
                     <div class="contact-item">
                         <div class="contact-icon">
-                            <i class="fas fa-envelope"></i>
+                            <i class="fas fa-envelope" aria-hidden="true"></i>
                         </div>
                         <div class="contact-details">
                             <h3>Email</h3>
-                            <p>contacto@luisfernandosuarez.com</p>
+                            <a href="mailto:contacto@luisfernandosuarez.com" aria-label="Enviar un email">contacto@luisfernandosuarez.com</a>
                         </div>
                     </div>
                     <div class="contact-item">
                         <div class="contact-icon">
-                            <i class="fas fa-map-marker-alt"></i>
+                            <i class="fas fa-map-marker-alt" aria-hidden="true"></i>
                         </div>
                         <div class="contact-details">
                             <h3>Oficina</h3>
@@ -290,31 +433,36 @@
                     </div>
                     <div class="contact-item">
                         <div class="contact-icon">
-                            <i class="fas fa-clock"></i>
+                            <i class="fas fa-clock" aria-hidden="true"></i>
                         </div>
                         <div class="contact-details">
-                            <h3>Horario</h3>
+                            <h3>Horario de Atención</h3>
                             <p>Lun - Vie: 9:00 AM - 6:00 PM</p>
                             <p>Sáb: 10:00 AM - 2:00 PM</p>
                         </div>
                     </div>
                 </div>
-                <form class="contact-form" id="contactForm">
+                <form class="contact-form" id="contactForm" aria-label="Formulario de contacto">
                     <div class="form-group">
-                        <input type="text" id="name" name="name" placeholder="Tu nombre" required>
+                        <label for="name" class="sr-only">Nombre</label>
+                        <input type="text" id="name" name="name" placeholder="Tu nombre" required aria-required="true">
                     </div>
                     <div class="form-group">
-                        <input type="email" id="email" name="email" placeholder="Tu email" required>
+                        <label for="email" class="sr-only">Email</label>
+                        <input type="email" id="email" name="email" placeholder="Tu email" required aria-required="true">
                     </div>
                     <div class="form-group">
-                        <input type="tel" id="phone" name="phone" placeholder="Tu teléfono">
+                        <label for="phone" class="sr-only">Teléfono</label>
+                        <input type="tel" id="phone" name="phone" placeholder="Tu teléfono (opcional)">
                     </div>
                     <div class="form-group">
-                        <textarea id="message" name="message" rows="5" placeholder="Tu mensaje" required></textarea>
+                        <label for="message" class="sr-only">Mensaje</label>
+                        <textarea id="message" name="message" rows="5" placeholder="Cuéntame sobre tu proyecto inmobiliario..." required aria-required="true"></textarea>
                     </div>
-                    <button type="submit" class="btn btn-primary">
-                        <i class="fas fa-paper-plane"></i> Enviar Mensaje
+                    <button type="submit" class="btn btn-primary" aria-label="Enviar mensaje de contacto">
+                        <i class="fas fa-paper-plane" aria-hidden="true"></i> Enviar Mensaje
                     </button>
+                    <p class="form-privacy">Al enviar este formulario, aceptas que tus datos sean utilizados para contactarte.</p>
                 </form>
             </div>
         </div>
@@ -329,12 +477,12 @@
                         <i class="fas fa-home"></i>
                         <span>Luis Fernando Suarez Brucsoni</span>
                     </div>
-                    <p>Tu socio de confianza en bienes raíces. Especialistas en paseos virtuales 360°.</p>
+                    <p>Tu agente inmobiliario de confianza. Especialistas en compra, venta y asesoría de propiedades con más de 10 años de experiencia.</p>
                     <div class="social-links">
-                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
-                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-                        <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
-                        <a href="#" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                        <a href="#" aria-label="Síguenos en Facebook" target="_blank" rel="noopener noreferrer"><i class="fab fa-facebook" aria-hidden="true"></i></a>
+                        <a href="#" aria-label="Síguenos en Instagram" target="_blank" rel="noopener noreferrer"><i class="fab fa-instagram" aria-hidden="true"></i></a>
+                        <a href="#" aria-label="Conectar en LinkedIn" target="_blank" rel="noopener noreferrer"><i class="fab fa-linkedin" aria-hidden="true"></i></a>
+                        <a href="#" aria-label="Contactar por WhatsApp" target="_blank" rel="noopener noreferrer"><i class="fab fa-whatsapp" aria-hidden="true"></i></a>
                     </div>
                 </div>
                 <div class="footer-section">
@@ -342,7 +490,8 @@
                     <ul>
                         <li><a href="#inicio">Inicio</a></li>
                         <li><a href="#propiedades">Propiedades</a></li>
-                        <li><a href="#paseos-virtuales">Paseos Virtuales</a></li>
+                        <li><a href="#categorias">Categorías</a></li>
+                        <li><a href="#servicios">Servicios</a></li>
                         <li><a href="#sobre-mi">Sobre Mí</a></li>
                         <li><a href="#contacto">Contacto</a></li>
                     </ul>
@@ -350,20 +499,21 @@
                 <div class="footer-section">
                     <h3>Servicios</h3>
                     <ul>
-                        <li><a href="#">Compra de Propiedades</a></li>
-                        <li><a href="#">Venta de Propiedades</a></li>
-                        <li><a href="#">Paseos Virtuales 360°</a></li>
-                        <li><a href="#">Asesoría Inmobiliaria</a></li>
-                        <li><a href="#">Tasaciones</a></li>
+                        <li><a href="#servicios">Compra de Propiedades</a></li>
+                        <li><a href="#servicios">Venta de Propiedades</a></li>
+                        <li><a href="#servicios">Paseos Virtuales 360°</a></li>
+                        <li><a href="#servicios">Asesoría Inmobiliaria</a></li>
+                        <li><a href="#servicios">Tasaciones</a></li>
                     </ul>
                 </div>
                 <div class="footer-section">
                     <h3>Newsletter</h3>
                     <p>Suscríbete para recibir las mejores ofertas</p>
-                    <form class="newsletter-form">
-                        <input type="email" placeholder="Tu email" required>
-                        <button type="submit" class="btn btn-primary">
-                            <i class="fas fa-paper-plane"></i>
+                    <form class="newsletter-form" aria-label="Formulario de suscripción al newsletter">
+                        <label for="newsletter-email" class="sr-only">Email para newsletter</label>
+                        <input type="email" id="newsletter-email" placeholder="Tu email" required aria-required="true">
+                        <button type="submit" class="btn btn-primary" aria-label="Suscribirse al newsletter">
+                            <i class="fas fa-paper-plane" aria-hidden="true"></i>
                         </button>
                     </form>
                 </div>
@@ -380,7 +530,8 @@
     </button>
 
     <!-- JavaScript -->
-    <script src="static/js/main.js"></script>
+    <script src="/static/js/navbar.js"></script>
+    <script src="/static/js/main.js"></script>
 </body>
 </html>
 
