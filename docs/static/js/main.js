@@ -1,13 +1,20 @@
 // ============================================
 // NAVIGATION
 // ============================================
+// Nota: El hamburger menu ahora se maneja en navbar.js
+// Este código se mantiene como fallback si navbar.js no se carga
 const hamburger = document.getElementById('hamburger');
 const navMenu = document.getElementById('navMenu');
 
-if (hamburger && navMenu) {
+// Solo inicializar si navbar.js no lo ha hecho ya
+if (hamburger && navMenu && !hamburger.hasAttribute('data-navbar-initialized')) {
+    hamburger.setAttribute('data-navbar-initialized', 'true');
+    
     hamburger.addEventListener('click', () => {
+        const isActive = navMenu.classList.contains('active');
         navMenu.classList.toggle('active');
         hamburger.classList.toggle('active');
+        hamburger.setAttribute('aria-expanded', !isActive);
     });
 
     // Close menu when clicking on a link
@@ -15,7 +22,20 @@ if (hamburger && navMenu) {
         link.addEventListener('click', () => {
             navMenu.classList.remove('active');
             hamburger.classList.remove('active');
+            // Actualizar aria-expanded
+            hamburger.setAttribute('aria-expanded', 'false');
         });
+    });
+
+    // Close menu when clicking outside
+    document.addEventListener('click', (e) => {
+        if (navMenu.classList.contains('active') && 
+            !e.target.closest('.nav-menu') && 
+            !e.target.closest('.hamburger')) {
+            navMenu.classList.remove('active');
+            hamburger.classList.remove('active');
+            hamburger.setAttribute('aria-expanded', 'false');
+        }
     });
 }
 
@@ -43,7 +63,10 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         e.preventDefault();
         const target = document.querySelector(this.getAttribute('href'));
         if (target) {
-            const offsetTop = target.offsetTop - 80;
+            // Calcular offset dinámico según el tamaño de pantalla
+            const isMobile = window.innerWidth < 768;
+            const offset = isMobile ? 60 : 80;
+            const offsetTop = target.offsetTop - offset;
             window.scrollTo({
                 top: offsetTop,
                 behavior: 'smooth'
@@ -191,6 +214,81 @@ window.addEventListener('scroll', () => {
             });
         }
     });
+});
+
+// ============================================
+// CATEGORIES TOGGLE
+// ============================================
+document.querySelectorAll('.category-toggle').forEach(toggle => {
+    toggle.addEventListener('click', function(e) {
+        e.stopPropagation(); // Prevenir que se propague el evento
+        
+        const categoryCard = this.closest('.category-card');
+        const subcategories = categoryCard.querySelector('.category-subcategories');
+        const isActive = categoryCard.classList.contains('active');
+        
+        // Si la categoría actual está activa, cerrarla
+        if (isActive) {
+            categoryCard.classList.remove('active');
+            this.setAttribute('aria-expanded', 'false');
+            if (subcategories) {
+                subcategories.style.maxHeight = '0px';
+                subcategories.style.marginTop = '0px';
+            }
+            return;
+        }
+        
+        // Cerrar todas las demás categorías primero
+        document.querySelectorAll('.category-card').forEach(card => {
+            if (card !== categoryCard) {
+                card.classList.remove('active');
+                const button = card.querySelector('.category-toggle');
+                const subcats = card.querySelector('.category-subcategories');
+                if (button) {
+                    button.setAttribute('aria-expanded', 'false');
+                }
+                if (subcats) {
+                    subcats.style.maxHeight = '0px';
+                    subcats.style.marginTop = '0px';
+                }
+            }
+        });
+        
+        // Abrir la categoría actual
+        categoryCard.classList.add('active');
+        this.setAttribute('aria-expanded', 'true');
+        
+        // Calcular altura dinámica
+        if (subcategories) {
+            // Resetear primero para calcular correctamente
+            subcategories.style.maxHeight = '0px';
+            subcategories.style.marginTop = '0px';
+            // Usar requestAnimationFrame para asegurar que el reset se aplique
+            requestAnimationFrame(() => {
+                const tempHeight = subcategories.scrollHeight;
+                subcategories.style.maxHeight = tempHeight + 'px';
+                subcategories.style.marginTop = '1.5rem';
+            });
+        }
+    });
+});
+
+// Cerrar categorías al hacer click fuera
+document.addEventListener('click', (e) => {
+    if (!e.target.closest('.category-card') && !e.target.closest('.category-toggle')) {
+        document.querySelectorAll('.category-card').forEach(card => {
+            card.classList.remove('active');
+            const button = card.querySelector('.category-toggle');
+            const subcategories = card.querySelector('.category-subcategories');
+            if (button) {
+                button.setAttribute('aria-expanded', 'false');
+            }
+            if (subcategories) {
+                subcategories.style.maxHeight = '0px';
+                subcategories.style.marginTop = '0px';
+            }
+        });
+    }
 });
 
 // ============================================
