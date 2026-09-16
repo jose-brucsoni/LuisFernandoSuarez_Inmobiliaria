@@ -3,105 +3,79 @@
  * Carga y configura el navbar reutilizable para todas las páginas
  */
 
-// Configuración del navbar por página
+// Configuración del navbar por página (Django: data-active-nav o pathname)
 const navbarConfig = {
-    'index.html': {
+    'inicio': {
         logoHref: '#inicio',
         showDestacadas: true,
         showSobreMi: true,
-        activeItem: 'inicio',
-        menuItems: [
-            { href: '#inicio', label: 'Inicio', ariaLabel: 'Ir a la sección de inicio' },
-            { href: '/Portafolio.html', label: 'Portafolio', ariaLabel: 'Ver portafolio completo' },
-            { href: '#propiedades', label: 'Destacadas', ariaLabel: 'Ver propiedades destacadas' },
-            { href: '#servicios', label: 'Servicios', ariaLabel: 'Conocer nuestros servicios' },
-            { href: '#sobre-mi', label: 'Sobre Mí', ariaLabel: 'Conocer más sobre mí' },
-            { href: '#contacto', label: 'Contacto', ariaLabel: 'Ponerse en contacto', isCTA: true }
-        ]
+        activeItem: 'inicio'
     },
-    'Inmueble.html': {
-        logoHref: '/index.html',
-        showDestacadas: false,
-        showSobreMi: false,
-        activeItem: null,
-        menuItems: [
-            { href: '/index.html', label: 'Inicio', ariaLabel: 'Ir al inicio' },
-            { href: '/Portafolio.html', label: 'Portafolio', ariaLabel: 'Ver portafolio completo' },
-            { href: '/index.html#servicios', label: 'Servicios', ariaLabel: 'Conocer nuestros servicios' },
-            { href: '/index.html#contacto', label: 'Contacto', ariaLabel: 'Ponerse en contacto', isCTA: true }
-        ]
-    },
-    'Portafolio.html': {
-        logoHref: '/index.html',
+    'portafolio': {
+        logoHref: '/',
         showDestacadas: false,
         showSobreMi: true,
-        activeItem: 'portafolio',
-        menuItems: [
-            { href: '/index.html', label: 'Inicio', ariaLabel: 'Ir al inicio' },
-            { href: '/Portafolio.html', label: 'Portafolio', ariaLabel: 'Ver portafolio completo' },
-            { href: '/index.html#servicios', label: 'Servicios', ariaLabel: 'Conocer nuestros servicios' },
-            { href: '/index.html#sobre-mi', label: 'Sobre Mí', ariaLabel: 'Conocer más sobre mí' },
-            { href: '/index.html#contacto', label: 'Contacto', ariaLabel: 'Ponerse en contacto', isCTA: true }
-        ]
-    }
+        activeItem: 'portafolio'
+    },
+    'inmueble': {
+        logoHref: '/',
+        showDestacadas: false,
+        showSobreMi: false,
+        activeItem: null
+    },
+    // Compatibilidad con rutas antiguas (archivos estáticos)
+    'index.html': { logoHref: '#inicio', showDestacadas: true, showSobreMi: true, activeItem: 'inicio' },
+    'Inmueble.html': { logoHref: '/', showDestacadas: false, showSobreMi: false, activeItem: null },
+    'Portafolio.html': { logoHref: '/', showDestacadas: false, showSobreMi: true, activeItem: 'portafolio' }
 };
 
 /**
- * Carga el navbar desde el componente HTML
+ * Obtiene la clave de configuración según pathname (Django URLs)
+ */
+function pathnameToPageKey(pathname) {
+    if (!pathname || pathname === '/') return 'inicio';
+    if (pathname.startsWith('/portafolio')) return 'portafolio';
+    if (pathname.startsWith('/inmueble')) return 'inmueble';
+    return pathname.split('/').filter(Boolean).pop() || 'inicio';
+}
+
+/**
+ * Navbar: si ya está en el DOM (Django include), solo configurar e inicializar.
+ * Si hay placeholder, cargar por fetch (modo estático).
  */
 async function loadNavbar() {
+    const placeholder = document.getElementById('navbar-placeholder');
+    const navbarInDom = document.querySelector('nav.navbar');
+
+    if (navbarInDom && !placeholder) {
+        // Django: navbar ya incluido en la plantilla
+        configureNavbar();
+        initializeNavbar();
+        return;
+    }
+
     try {
-        // Intentar diferentes rutas posibles
-        const possiblePaths = [
-            '/templates/components/navbar.html',
-            'templates/components/navbar.html',
-            '/components/navbar.html',
-            'components/navbar.html'
-        ];
-        
-        let response = null;
+        const possiblePaths = ['/templates/components/navbar.html', 'templates/components/navbar.html', '/components/navbar.html', 'components/navbar.html'];
         let html = null;
-        
         for (const path of possiblePaths) {
             try {
-                response = await fetch(path);
+                const response = await fetch(path);
                 if (response.ok) {
                     html = await response.text();
                     break;
                 }
-            } catch (e) {
-                continue;
-            }
+            } catch (e) { continue; }
         }
-        
-        if (!html) {
-            throw new Error('No se pudo cargar el navbar desde ninguna ruta');
-        }
-        
-        // Buscar el placeholder o insertar al inicio del body
-        const placeholder = document.getElementById('navbar-placeholder');
+        if (!html) throw new Error('No se pudo cargar el navbar');
         const tempDiv = document.createElement('div');
         tempDiv.innerHTML = html;
         const navbar = tempDiv.firstElementChild;
-        
-        if (placeholder) {
-            // Reemplazar el placeholder con el navbar
-            placeholder.replaceWith(navbar);
-        } else {
-            // Si no hay placeholder, insertar al inicio del body
-            const body = document.body;
-            body.insertBefore(navbar, body.firstChild);
-        }
-        
-        // Configurar el navbar según la página actual
+        if (placeholder) placeholder.replaceWith(navbar);
+        else document.body.insertBefore(navbar, document.body.firstChild);
         configureNavbar();
-        
-        // Inicializar funcionalidad del hamburger menu
         initializeNavbar();
-        
     } catch (error) {
         console.error('Error al cargar el navbar:', error);
-        // Fallback: mantener el navbar original si existe
     }
 }
 
@@ -109,8 +83,9 @@ async function loadNavbar() {
  * Configura el navbar según la página actual
  */
 function configureNavbar() {
-    const currentPage = window.location.pathname.split('/').pop() || 'index.html';
-    const config = navbarConfig[currentPage];
+    const dataNav = document.body.getAttribute('data-active-nav');
+    const currentPage = (dataNav !== null && dataNav !== undefined) ? dataNav : pathnameToPageKey(window.location.pathname);
+    const config = navbarConfig[currentPage] || navbarConfig['inicio'];
     
     if (!config) {
         console.warn(`No hay configuración para la página: ${currentPage}`);

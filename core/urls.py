@@ -17,6 +17,14 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
+from . import views
+
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('', views.InicioView.as_view(), name='inicio'),
+    path('portafolio/', views.PortafolioView.as_view(), name='portafolio'),
+    path('inmueble/<int:id>/', views.InmuebleView.as_view(), name='inmueble'),
+    path('iniciar-sesion/', views.InicioSesionView.as_view(), name='iniciar_sesion'),
+    path('panel/', views.PanelView.as_view(), name='panel'),
+    path('publicacion/', views.PublicacionView.as_view(), name='publicacion'),
 ]

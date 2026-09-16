@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -20,12 +21,11 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <!-- CSS -->
-    <link rel="stylesheet" href="/static/css/inmueble.css">
+    <link rel="stylesheet" href="{% static 'css/inmueble.css' %}">
 </head>
-<body>
+<body data-active-nav="">
     <!-- Navigation -->
-    <!-- El navbar se carga dinámicamente desde /templates/components/navbar.html -->
-    <div id="navbar-placeholder"></div>
+    {% include 'components/navbar.html' %}
 
     <!-- Breadcrumb -->
     <section class="breadcrumb-section">
@@ -314,11 +314,11 @@
                 <div class="footer-section">
                     <h3>Enlaces Rápidos</h3>
                     <ul>
-                        <li><a href="/templates/index.html">Inicio</a></li>
-                        <li><a href="/templates/Portafolio.html">Portafolio</a></li>
-                        <li><a href="/templates/index.html#servicios">Servicios</a></li>
-                        <li><a href="/templates/index.html#sobre-mi">Sobre Mí</a></li>
-                        <li><a href="/templates/index.html#contacto">Contacto</a></li>
+                        <li><a href="{% url 'inicio' %}">Inicio</a></li>
+                        <li><a href="{% url 'portafolio' %}">Portafolio</a></li>
+                        <li><a href="{% url 'inicio' %}#servicios">Servicios</a></li>
+                        <li><a href="{% url 'inicio' %}#sobre-mi">Sobre Mí</a></li>
+                        <li><a href="{% url 'inicio' %}#contacto">Contacto</a></li>
                     </ul>
                 </div>
                 <div class="footer-section">
@@ -370,7 +370,7 @@
 
     <!-- JavaScript -->
     <script src="/static/js/navbar.js"></script>
-    <script src="/static/js/inmueble.js"></script>
+    <script src="{% static 'js/inmueble.js' %}"></script>
 </body>
 </html>
 
